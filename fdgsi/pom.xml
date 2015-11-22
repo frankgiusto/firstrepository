@@ -8,8 +8,8 @@
   <name>FDGSI Inc Solutions</name>
   <scm>
   	<url>https://github.com/frankgiusto/firstrepository</url>
-  	<connection>https://github.com/frankgiusto/firstrepository</connection>
-  	<developerConnection>https://github.com/frankgiusto/firstrepository</developerConnection>
+  	<connection>scm:git:git://github.com/frankgiusto/firstrepository.git</connection>
+  	<developerConnection>scm:git:git@github.com:frankgiusto/firstrepository.git</developerConnection>
   </scm>
   <modules>
     <module>fdgsi-project</module>
