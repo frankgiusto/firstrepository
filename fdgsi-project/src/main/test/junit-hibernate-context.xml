@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:oxm="http://www.springframework.org/schema/oxm"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/oxm 
+    http://www.springframework.org/schema/oxm/spring-oxm-1.5.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd    
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+
+
+	<!-- Resolves ${...} placeholders from client.properties -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:test/config/database.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+	</bean>	
+	
+<bean id="customEditorConfigurer"
+      class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+  <property name="customEditors">
+    <map>
+      <entry key="java.util.Date">
+        <bean class="org.springframework.beans.propertyeditors.CustomDateEditor">
+          <constructor-arg index="0">
+            <bean class="java.text.SimpleDateFormat">
+              <constructor-arg value="yyyy-MM-dd"/>
+            </bean>
+          </constructor-arg>
+          <constructor-arg index="1" value="false"/>
+        </bean>
+      </entry>
+      <entry key="java.sql.Timestamp" value="ca.tci.clubs.common.SqlTimestampPropertyEditor"/>
+      
+       <entry key="java.lang.String">
+        <bean class="org.springframework.beans.propertyeditors.StringTrimmerEditor">
+            <constructor-arg index="0" value="false"/>
+      </bean>
+      </entry>    
+    </map>
+  </property>
+</bean>
+
+  <!-- 
+  http://static.springsource.org/spring/docs/2.0.x/reference/validation.html
+  http://www.devdaily.com/java/jwarehouse/spring-framework-2.5.3/src/org/springframework/beans/propertyeditors/StringTrimmerEditor.java.shtml
+</bean-->
+
+
+
+	
+	<bean id="dataSource" class="com.ibm.db2.jcc.DB2SimpleDataSource">
+		<property name="databaseName" value="${DATABASE_NAME}"/>
+		<property name="user" value="${USERNAME}"/>
+		<property name="password" value="${PASSWORD}"/>
+		
+	</bean>
+	
+	<!-- Hibernate SessionFactory --> 
+	<bean id="sessionFactoryClubs" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource"><ref local="dataSource"/></property>
+		<property name="annotatedClasses">
+		<list>
+			<value>ca.tci.clubs.dao.info.Sample</value>
+			<value>ca.tci.clubs.entity.Club</value>
+			<value>ca.tci.clubs.entity.Member</value>
+			<value>ca.tci.clubs.entity.Image</value>
+			<value>ca.tci.clubs.entity.Vehicle</value>
+			<value>ca.tci.clubs.entity.MigratedVehicle</value>
+			<value>ca.tci.clubs.entity.NotificationSetting</value>
+			<value>ca.tci.clubs.entity.NotificationType</value>
+			<value>ca.tci.clubs.entity.NotificationChannelType</value>
+			<value>ca.tci.clubs.entity.Notification</value>
+			<value>ca.tci.clubs.entity.NotificationDelivery</value>
+			<value>ca.tci.clubs.entity.MigratedUser</value>
+			<value>ca.tci.clubs.entity.ServiceType</value>
+			<value>ca.tci.clubs.entity.AppointmentType</value>
+			<value>ca.tci.clubs.entity.Appointment</value>
+			<value>ca.tci.clubs.entity.SurveyResponse</value>
+			<value>ca.tci.clubs.entity.SurveyQuestion</value>
+			<value>ca.tci.clubs.entity.Survey</value>
+			<value>ca.tci.clubs.entity.QuestionType</value>
+			<value>ca.tci.clubs.entity.ClubMember</value>
+		</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.DB2Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				 
+			</props>
+		</property>
+	</bean>
+	
+<!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory"><ref local="sessionFactoryClubs"/></property>
+	</bean>	
+	
+	<!-- enable the configuration of transactional behavior based on annotations -->
+    <tx:annotation-driven />
+    
+    	<!-- Data access object: Hibernate implementation.  -->
+  	<context:annotation-config/>
+    
+	<!-- sessionFactoryClubs is autowired in ca.tci.clubs.dao.ClubsBaseDaoSupport -->
+	<bean id="clubDao" class="ca.tci.clubs.dao.ClubDaoImpl" ></bean>
+	<bean id="sampleDao" class="ca.tci.clubs.dao.SampleDaoImpl"></bean>
+	<bean id="imageDao" class="ca.tci.clubs.dao.ImageDaoImpl"></bean>
+	<bean id="memberDao" class="ca.tci.clubs.dao.MemberDaoImpl" ></bean>
+	<bean id="vehicleDao" class="ca.tci.clubs.dao.VehicleDaoImpl" ></bean>
+	<bean id="notificationSettingDao" class="ca.tci.clubs.dao.NotificationSettingDaoImpl" ></bean>		
+	<bean id="notificationTypeDao" class="ca.tci.clubs.dao.NotificationTypeDaoImpl" ></bean>		
+	<bean id="notificationChannelTypeDao" class="ca.tci.clubs.dao.NotificationChannelTypeDaoImpl" ></bean>
+	<bean id="notificationDao" class="ca.tci.clubs.dao.NotificationDaoImpl" ></bean>
+	<bean id="migratedUserDao" class="ca.tci.clubs.dao.MigratedUserDaoImpl" ></bean>	
+	<bean id="campaignDao" class="ca.tci.clubs.dao.CampaignDaoImpl"></bean>	
+	<bean id="serviceTypeDao" class="ca.tci.clubs.dao.ServiceTypeDaoImpl"></bean>	
+	<bean id="appointmentTypeDao" class="ca.tci.clubs.dao.AppointmentTypeDaoImpl"></bean>	
+	<bean id="appointmentDao" class="ca.tci.clubs.dao.AppointmentDaoImpl"></bean>
+	
+	<bean id="daoMemberMock" class="ca.tci.clubs.dao.MemberDaoImpl" ></bean> 
+	<bean id="memberServiceMock" class="ca.tci.clubs.b2cservices.memberservice.MemberServiceImplMock" >
+		  <property name="daoMemberMock"  ref ="daoMemberMock"/>
+	</bean>	
+	<bean id="registrationService" class="ca.tci.clubs.b2cservices.registration.RegistrationServiceImpl" />
+
+	<bean id="campaignMgtService" class="ca.tci.clubs.b2cservices.campaignmanagementservice.CampaignManagementServiceImpl" autowire="byName">
+		<property name="campaignApi" ref="campaignAdaptor"/>
+	</bean>
+	
+	<bean id="campaignAdaptor" class="ca.tci.clubs.b2cservices.campaignmanagementservice.adaptor.CampaignAdaptorImpl">
+	</bean>	
+
+	<bean id="toyotavehicleservice" class="ca.tci.clubs.b2cservices.vehicleservice.ToyotaVehicleServiceImpl">	
+	</bean>
+	
+	<bean id="consumerRequestServiceImpl" class="ca.tci.clubs.b2cservices.consumerrequest.ConsumerRequestServiceImpl" autowire="byName">
+		<property name="appointmentDao">
+			<ref bean="appointmentDao"/>
+		</property>		
+		<property name="vehicleDao">
+			<ref bean="vehicleDao"/>
+		</property>	
+	</bean>
+	
+	<bean id="surveyResponseDao" class="ca.tci.clubs.dao.SurveyResponseDaoImpl" ></bean>
+	<bean id="surveyQuestionDao" class="ca.tci.clubs.dao.SurveyQuestionDaoImpl" ></bean>
+	<bean id="surveyDao" class="ca.tci.clubs.dao.SurveyDaoImpl" ></bean>
+	<bean id="clubMemberDao" class="ca.tci.clubs.dao.ClubMemberDaoImpl" ></bean>
+	<!-- data for UNIT tests -->
+ <bean id="vehicleEntMock" class=" ca.tci.clubs.entity.Vehicle" >	 
+	 <property name="displayName">				<value>displayName</value></property>
+	 <property name="displayOrder">				<value>1</value></property>
+	 <property name="vin">						<value>12345678</value></property>
+	 <property name="owned">					<value>T</value></property>
+	 <property name="vehicleModel">				<value>mod</value></property>
+	 <property name="vehicleModelNameEN">		<value>vehicleModelNameEN</value></property>
+	 <property name="vehicleModelNameFR">		<value>vehicleModelNameFR</value></property>
+	 <property name="vehicleSeries">			<value>ser</value></property>
+	 <property name="vehicleSeriesNameEN">		<value>vehicleSeriesNameEN</value></property>
+	 <property name="vehicleSeriesNameFR">		<value>vehicleSeriesNameFR</value></property>
+	 <property name="vehicleYear">				<value>1987</value></property>
+	 <property name="purchaseDate">				<value>2007-10-09</value></property>
+	 <property name="odometer">					<value>198201</value></property>
+	 <property name="leaseEndDate">				<value>2007-10-09</value></property>
+	 <property name="warrantyEndDate">			<value>2007-10-09</value></property>
+	 <property name="ecpEndDate">				<value>2007-10-09</value></property>
+	 <property name="roadsideAssistanceEndDate"><value>2007-10-09</value></property>
+	 <property name="securityCode">				<value>112</value></property>
+	 <property name="securityCodeRequested">	<value>T</value></property>
+	 <property name="securityCodeRequestedDate"><value>2007-10-09</value></property>
+	 <property name="createdTimestamp">			<value>2007-10-09</value></property>
+	 <property name="updatedTimestamp">			<value>2007-10-09</value></property>
+	 <property name="updatedBy">				<value>1</value></property>
+</bean>
+
+
+ <bean id="migratedUserEntMock" class="ca.tci.clubs.entity.MigratedUser" > 
+  <property name="id">		      <value>123</value></property>
+  <property name="languageCode">  <value>en</value></property> 
+  <!-- this will not work in Unit Tests as in MigratedUser bean we have isMigrated with boolean return value. 
+  Value is set in java code. 
+  property name="migrated">	  <value>T</value></property --> 
+  <property name="createdTimestamp"><value>2007-10-09</value></property>
+  <property name="clubId"> 		  <value>1</value></property>  
+  </bean>
+  
+  
+
+
+ <bean id="migratedVehicleEntMock" class="ca.tci.clubs.entity.MigratedVehicle" >	
+ 
+  <property name="migratedUserId">				<value>123</value></property> 
+  <property name="vin">							<value>123456780</value></property> 
+  <property name="displayName">					<value>displayName1</value></property>
+  <property name="modelYear">					<value>2005</value></property>
+  <property name="createdTimestamp">			<value>2007-10-09</value></property>
+  <property name="securityCode">				<value>112</value></property>
+  <property name="codeRequested">				<value>Y</value></property>
+  <property name="codeRequestedTimestamp">		<value>2011-08-20</value></property>
+</bean>
+
+ <bean id="migratedVehicleEntMock2" class="ca.tci.clubs.entity.MigratedVehicle" >	
+ 
+  <property name="migratedUserId">				<value>123</value></property> 
+  <property name="vin">							<value>123456781</value></property> 
+  <property name="displayName">					<value>displayName2</value></property>
+  <property name="modelYear">					<value>2010</value></property>
+  <property name="createdTimestamp">			<value>2007-10-09</value></property>
+  <property name="securityCode">				<value>112</value></property>
+  <property name="codeRequested">				<value>T</value></property>
+  <property name="codeRequestedTimestamp">		<value>2011-08-20</value></property>
+</bean>
+
+
+<bean id="userProfileEnterpriseMock" class="ca.tci.clubs.schema.registration.UserProfileEnterprise" >	
+	
+	 <property name="memberID">				    <value>2002</value></property> 
+	 <property name="migratedUser">				<value>false</value></property>
+	 <property name="languageCode">				<value>en</value></property> 
+	 <property name="clubId">				    <value>1</value></property>
+	 <property name="emailAddress"> 					<value>junit@test.com</value></property>
+	 
+</bean>
+
+
+<bean id="vehicleModelMock" class="ca.tci.clubs.schema.registration.Vehicle" >	
+	
+	 <property name="model">			<value>xf7</value></property>
+	 <property name="series">			<value>cam</value></property>
+	 <property name="owned">			<value>true</value></property>
+	 <property name="name">			    <value>MyNameCar</value></property>
+ 
+</bean>
+
+
+
+
+<bean id="vinDetailsTypeMock1" class="ca.tci.model.schema.vehicle.information.xsd.v1.VinDetailsType" >	
+
+ 	<property name="vin"> 					<value>EntpriseVin123</value></property>
+ 	<property name="modelNameEn">    <value>EntpriseModelDescrEn</value></property>
+ 	<property name="modelNameFr">    <value>EntpriseModelDescrFr</value></property>
+ 	<property name="seriesNameEn">   <value>EntpriseSerDescrEn</value></property>
+ 	<property name="seriesNameFr">   <value>EntpriseSerDescrFr</value></property>
+ 	<property name="modelYear"> 		    <value>2008</value></property>
+ 
+
+ 	
+
+</bean>
+
+<bean id="vinDetailsTypeMock2" class="ca.tci.model.schema.vehicle.information.xsd.v1.VinDetailsType" >	
+ 	<property name="vin"> 					<value>EntpriseVin124</value></property>
+ 	<property name="modelNameEn">    <value>EntpriseModelDescrEn</value></property>
+ 	<property name="modelNameFr">    <value>EntpriseModelDescrFr</value></property>
+ 	<property name="seriesNameEn">   <value>EntpriseSerDescrEn</value></property>
+ 	<property name="seriesNameFr">   <value>EntpriseSerDescrFr</value></property>
+ 	<property name="modelYear"> 		    <value>2010</value></property>
+</bean>
+
+<bean id="memberMock" class="ca.tci.clubs.entity.Member" >	
+
+	<property name="id"> 			<value>0</value></property>
+ 	<property name="customerNumber"> <value>0</value></property>
+ 	<property name="email"> 		<value>junit@test.com</value></property>
+ 	<property name="clubId">    	 <value>1</value></property>
+ 	<property name="languageCode">    <value>en</value></property>
+ 	<property name="migrationTimestamp">   <value>2011-08-20</value></property>
+ 	<property name="accountDeactivated">  <value>false</value></property>
+ 	<property name="createdTimestamp">   <value>2011-08-20</value></property>
+ 	<property name="updatedTimestamp"> 	 <value>2011-08-20</value></property>
+ 	<property name="lastLoginTimestamp"> 	 <value>2011-08-20</value></property>
+ 	<property name="updatedBy"> 	 		<value>0</value></property>
+	<property name="firstName"> 	 		<value>Frank</value></property>
+	<property name="lastName"> 	 		<value>Giusto</value></property>
+
+ 
+	
+</bean>	
+	<bean id="appointmentRequest" class="ca.tci.clubs.schema.consumerrequest.AppointmentRequest">
+		<property name="club" value="TOYOTA"/>
+		<property name="consumerRequestDetail" ref="appointmentRequestDetail"/>
+		<property name="clubRequestDetail" ref="clubRequestDetail"/>
+	</bean>
+	
+	
+	<bean id="contactUsRequest" class="ca.tci.clubs.schema.consumerrequest.ContactUsRequest">
+		<property name="club"><value>TOYOTA</value> </property>
+		<property name="requestDetail" ref="contactusRequestDetail"/>
+	</bean>
+
+	<bean id="contactusRequestDetail" class="ca.tci.clubs.schema.consumerrequest.ConsumerReqType">
+		<property name="programId"><value>toyota.ca</value> </property>
+		<property name="userId"><value>public</value> </property>
+		<property name="language"><value>en</value> </property>
+		<property name="requestTypeCode"><value>CU</value> </property>
+		<property name="consumerInfo" ref="consumerInfo"/>
+		<property name="consumerReqInfo" ref="contactUsConsumerReqInfo"/>
+	</bean>
+
+	<bean id="appointmentRequestDetail" class="ca.tci.clubs.schema.consumerrequest.ConsumerReqType">
+		<property name="programId"><value>toyota.ca</value> </property>
+		<property name="userId"><value>user</value> </property>
+		<property name="language"><value>en</value> </property>
+		<property name="requestTypeCode"><value>RA_FW</value> </property>
+		<property name="consumerInfo" ref="consumerInfo"/>
+		<property name="consumerReqInfo" ref="appointmentConsumerReqInfo"/>
+	</bean>
+		
+	<bean id="consumerInfo" class="ca.tci.clubs.schema.consumerrequest.ConsumerInfoType">
+		<property name="firstName"><value>vince</value> </property>
+		<property name="lastName"><value>chen</value> </property>
+		<property name="homePhone"><value>4163456789</value> </property>
+		<property name="emailAddress"><value>tom_chen@toyota.ca</value> </property>
+		<property name="address" value="1 yonge st"/>
+		<property name="city" value="toronto"/>
+		<property name="province" value="ontario"/>
+		<property name="postalCode" value="m1m1m1"/>
+		<property name="dealer" value="43212"/>
+		<property name="preferredContactMethod"><value>Day Phone</value> </property>
+	</bean>
+	
+	<bean id="contactUsConsumerReqInfo" class="ca.tci.clubs.schema.consumerrequest.ConsumerReqInfoType">
+		<property name="activityType"><value>Contact</value> </property>
+		<property name="requestContactIndicator"><value>true</value> </property>
+		<property name="activityNote"><value>this is contact us request test from junit</value> </property>
+		<property name="leadRequestType"><value>CONTACTUS</value> </property>	
+	</bean>
+	
+	<bean id="appointmentConsumerReqInfo" class="ca.tci.clubs.schema.consumerrequest.ConsumerReqInfoType">
+		<property name="activityType"><value>Service Appointment</value> </property>
+		<property name="requestContactIndicator"><value>false</value> </property>
+		<property name="activityNote"><value>this is appointment request test from junit</value> </property>
+		<property name="leadRequestType"><value>SERVICE_APPT</value> </property>
+		
+	</bean>	
+	
+	<bean id="clubRequestDetail" class="ca.tci.clubs.schema.consumerrequest.ClubAppointmentReqType">
+		<property name="appointmentTypeId" value="2"/>
+		<property name="serviceTypeId" value="2"/>
+		<property name="dropOffTime" value="09:00:00"/>
+		<property name="dealerId" value="43212"/>
+		<property name="vehicleBroughtByName" value="tom chen"/>
+		<property name="vehicleBroughtByPhone" value="6471112222"/>
+		<property name="comment" value="unit test appointment"/>	
+	</bean>
+	
+	
+	<bean id="getVehicleServiceHistoryRequest" class="ca.tci.clubs.schema.vehicle.GetVehicleServiceHistoryRequest">
+		<property name="customerName"><value>MOCLE, MIRCEA</value> </property>
+		<property name="customerNumber"><value>M00909115</value> </property>
+		<property name="vin"><value>JT2BF22K9W0118843</value> </property>
+	</bean>
+		
+	<bean id="nsSave" class="ca.tci.clubs.schema.myprofile.NotificationSettings">
+		<property name="receiveServiceReminder"><value>true</value></property>
+		<property name="receiveRoadsideAssistReminder"><value>true</value></property>
+		<property name="receiveLeaseEndingReminder"><value>true</value></property>
+		<property name="receiveWarrantyEndingReminder"><value>true</value></property>
+		<property name="receiveEcpEndingReminder"><value>true</value></property>		
+	</bean>
+	
+	<bean id="nsRemove" class="ca.tci.clubs.schema.myprofile.NotificationSettings">
+		<property name="receiveServiceReminder"><value>false</value></property>
+		<property name="receiveRoadsideAssistReminder"><value>false</value></property>
+		<property name="receiveLeaseEndingReminder"><value>false</value></property>
+		<property name="receiveWarrantyEndingReminder"><value>false</value></property>
+		<property name="receiveEcpEndingReminder"><value>false</value></property>		
+	</bean>	
+</beans>
