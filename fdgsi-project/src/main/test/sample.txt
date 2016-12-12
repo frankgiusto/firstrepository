@@ -1,0 +1,37 @@
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+
+				<property name="generateDdl" value="false" />
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+		<property name="persistenceXmlLocation"
+			value="classpath:/META-INF/persistence-avea.xml" />
+<!-- 		<property name="persistenceUnitPostProcessors">
+			<list>
+				<bean
+					class="com.alu.ipd.ode.module.workorders.dao.impl.WorkOrderJarPersistenceUnitPostProcessor" />
+			</list>
+		</property> -->
+	</bean>
+	
+	
+	was in test-resources / meta-inf /
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<!-- Maybe should look into doing this in spring config rather than separate xml config -->
+	<persistence-unit name="portal" transaction-type="RESOURCE_LOCAL">
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.CityEntity</class>
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.RegionEntity</class>
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.PortMappingEntity</class>
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.PortMappingLinkEntity</class>
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.VlanMappingLinkEntity</class>
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.PortCriteriaEntity</class>
+			<class>com.alu.ipd.ode.customer.tablemaint.entity.VlanCriteriaEntity</class>
+	</persistence-unit>
+</persistence>	
+	
