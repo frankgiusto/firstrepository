@@ -1,0 +1,3569 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tmk="http://www.wipo.int/standards/XMLSchema/ST96/Trademark" xmlns:com="http://www.wipo.int/standards/XMLSchema/ST96/Common" targetNamespace="http://www.wipo.int/standards/XMLSchema/ST96/Trademark" elementFormDefault="qualified" attributeFormDefault="qualified" version="V2_0">
+	<xsd:import namespace="http://www.wipo.int/standards/XMLSchema/ST96/Common" schemaLocation="Common_Hague_Madrid_V2_0.xsd"/>
+		<xsd:element name="MadridIBToOfficeTransaction">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tmk:MadridIBTransactionHeader"/>
+				<xsd:element ref="tmk:MadridIBToOfficeBag"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="NationalDesignSearchCodeBag" type="tmk:NationalDesignSearchCodeBagType">
+		<xsd:annotation>
+			<xsd:documentation>A collection of national design search codes and possible descriptions</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageRenditionBag" type="tmk:MarkImageRenditionBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of renditions in different formats that have been performed on the source image</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageQualityIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indication whether the image has been provided in a good or bad quality</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Holder" type="tmk:ApplicantType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding the holder of the trade mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="MadridIBTransactionCountType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MadridIBTransactionCategory"/>
+			<xsd:element ref="com:TransactionTotalQuantity" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Irregularity">
+		<xsd:annotation>
+			<xsd:documentation>Details of a defect, failure, or mistake</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tmk:IrregularityIdenfier"/>
+				<xsd:element ref="tmk:ResponsiblePartyCategory"/>
+				<xsd:element ref="tmk:IrregularityConsequenceCategory"/>
+				<xsd:element ref="tmk:IrregularityDescriptionText" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="MadridIrregularityNotificationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Application">
+				<xsd:annotation>
+					<xsd:documentation>Application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refusal appeal details">
+				<xsd:annotation>
+					<xsd:documentation>Refusal appeal details </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Ceasing of effect">
+				<xsd:annotation>
+					<xsd:documentation>Ceasing of effect</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Continuation of effects">
+				<xsd:annotation>
+					<xsd:documentation>Continuation of effects</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Disclaimer">
+				<xsd:annotation>
+					<xsd:documentation>Disclaimer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Subsequent designation">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision">
+				<xsd:annotation>
+					<xsd:documentation>Final decision</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Grant of protection">
+				<xsd:annotation>
+					<xsd:documentation>Grant of protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Invalidation">
+				<xsd:annotation>
+					<xsd:documentation>Invalidation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Limitation">
+				<xsd:annotation>
+					<xsd:documentation>Limitation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Appointment of representative">
+				<xsd:annotation>
+					<xsd:documentation>Appoint/renuncia repres </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change name or address of representative">
+				<xsd:annotation>
+					<xsd:documentation>Change name/address repr </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of holder name or address">
+				<xsd:annotation>
+					<xsd:documentation>Change of holder name </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Notification of possible opposition">
+				<xsd:annotation>
+					<xsd:documentation>Opposition period Extn</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Partial cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total cancellation">
+				<xsd:annotation>
+					<xsd:documentation>	Total cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Complementary renewal">
+				<xsd:annotation>
+					<xsd:documentation>Complementary Renewal </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refusal">
+				<xsd:annotation>
+					<xsd:documentation>Refusal </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renunciation">
+				<xsd:annotation>
+					<xsd:documentation>Renunciation </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refusal of change Holder">
+				<xsd:annotation>
+					<xsd:documentation>Refusal Of Change Holder </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of ownership">
+				<xsd:annotation>
+					<xsd:documentation>Change of ownership </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renewal">
+				<xsd:annotation>
+					<xsd:documentation>Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Subsequent designation based on conversion">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation based on conversion</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="LicenseeChangeBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:PreviousLicenseeBag"/>
+			<xsd:element ref="tmk:LicenseeBag"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LicenseeType">
+		<xsd:complexContent>
+			<xsd:extension base="com:LegalEntityType">
+				<xsd:sequence>
+					<xsd:element ref="com:CommentText" minOccurs="0"/>
+					<xsd:element ref="tmk:Entitlement" minOccurs="0"/>
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element ref="com:PartyIdentifier"/>
+						<xsd:element ref="com:Contact"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute ref="com:operationCategory"/>
+				<xsd:attribute ref="com:sequenceNumber"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="LicenceBag" type="tmk:LicenceBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of licences </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReasonDocument" type="tmk:ReasonDocumentType">
+		<xsd:annotation>
+			<xsd:documentation>The document under which a legally significant act takes place</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContractInformation" type="tmk:ContractInformationType">
+		<xsd:annotation>
+			<xsd:documentation>Contract details</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClaimantBag" type="tmk:ClaimantBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the claimants </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RecordPublicationBag" type="tmk:RecordPublicationBagType">
+		<xsd:annotation>
+			<xsd:documentation>Publication details for the record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TrademarkIdentification" type="tmk:TrademarkIdentificationType">
+		<xsd:annotation>
+			<xsd:documentation>Details of keys for the trade marks that are affected by the record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridCorrectContentCategory" type="tmk:MadridCorrectContentCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Indication of what was been corrected</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CorrectionDescriptionText" type="com:LocalizedTextType"/>
+	<xsd:simpleType name="MadridCompletedProcessingCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Renewal">
+				<xsd:annotation>
+					<xsd:documentation>Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Complementary renewal">
+				<xsd:annotation>
+					<xsd:documentation>Complementary renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Non renewal certain parties">
+				<xsd:annotation>
+					<xsd:documentation>Partial Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of ownership">
+				<xsd:annotation>
+					<xsd:documentation>Change of ownership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Subsequent designation">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Subsequent designation resulting from conversion">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation resulting from conversion</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Limitation">
+				<xsd:annotation>
+					<xsd:documentation>Limitation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Partial cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renunciation">
+				<xsd:annotation>
+					<xsd:documentation>Renunciation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of basic numbers">
+				<xsd:annotation>
+					<xsd:documentation>Division or merger of basic registration  or application numbers</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial ceasing of effect of basic registration">
+				<xsd:annotation>
+					<xsd:documentation>Partial ceasing of effect of basic registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total ceasing of effect of basic registration">
+				<xsd:annotation>
+					<xsd:documentation>Total ceasing of effect of basic registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Continuation of effects">
+				<xsd:annotation>
+					<xsd:documentation>Continuation of effects</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Possible ceasing of effect">
+				<xsd:annotation>
+					<xsd:documentation>Judicial actions or proceedings under rule 22-1-b which are taking place in the office of origin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Ceasing of effect">
+				<xsd:annotation>
+					<xsd:documentation>Facts and decisions under rule 22-1-a and -c</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Restriction of a holders right of disposal">
+				<xsd:annotation>
+					<xsd:documentation>Restriction of a holders right of disposal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Merger">
+				<xsd:annotation>
+					<xsd:documentation>Merger</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Replacement of a national registration ">
+				<xsd:annotation>
+					<xsd:documentation>Replacement of a national registration by an international registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refusal of a change in ownership">
+				<xsd:annotation>
+					<xsd:documentation>Refusal of a change in ownership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Appointment of a representative">
+				<xsd:annotation>
+					<xsd:documentation>Appointment of a representative</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of holder name and or address">
+				<xsd:annotation>
+					<xsd:documentation>Change of holder name and/or address</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial change of ownership">
+				<xsd:annotation>
+					<xsd:documentation>Partial change of ownership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Notification of possible opposition ">
+				<xsd:annotation>
+					<xsd:documentation>Notification of opposition periods beyond 18 months</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Correction">
+				<xsd:annotation>
+					<xsd:documentation>Correction</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Grant of protection">
+				<xsd:annotation>
+					<xsd:documentation>Grant of protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Grant of protection subject to opposition">
+				<xsd:annotation>
+					<xsd:documentation>Grant of protection subject to opposition</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Grant of protection after the expiry of the opposition period">
+				<xsd:annotation>
+					<xsd:documentation>Grant of protection after the expiry of the opposition period</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Request for review or appeal expired">
+				<xsd:annotation>
+					<xsd:documentation>Request for review or appeal expired</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Request for review or appeal withdrawn">
+				<xsd:annotation>
+					<xsd:documentation>Request for review or appeal withdrawn</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Request for review or appeal lodged">
+				<xsd:annotation>
+					<xsd:documentation>Request for review or appeal lodged</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total refusal">
+				<xsd:annotation>
+					<xsd:documentation>Total refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial refusal">
+				<xsd:annotation>
+					<xsd:documentation>Partial refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision confirming the original refusal">
+				<xsd:annotation>
+					<xsd:documentation>Final decision confirming the original refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision reversing the original refusal">
+				<xsd:annotation>
+					<xsd:documentation>Final decision reversing the original refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other final decision">
+				<xsd:annotation>
+					<xsd:documentation>Other Final decision - usually a partial reversal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision refusing some of the goods and services">
+				<xsd:annotation>
+					<xsd:documentation>Final decision refusing some of the goods and services</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision refusing all of the goods and services">
+				<xsd:annotation>
+					<xsd:documentation>Final decision refusing all of the goods and services</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial invalidation">
+				<xsd:annotation>
+					<xsd:documentation>Partial invalidation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total invalidation">
+				<xsd:annotation>
+					<xsd:documentation>Total invalidation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Disclaimer">
+				<xsd:annotation>
+					<xsd:documentation>Disclaimer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="New licence">
+				<xsd:annotation>
+					<xsd:documentation>New licence</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Licensee name and or address change">
+				<xsd:annotation>
+					<xsd:documentation>Licensee name and/or address change</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Limitation refused">
+				<xsd:annotation>
+					<xsd:documentation>Declaration that a limitation has no effect</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision partially granting protection">
+				<xsd:annotation>
+					<xsd:documentation>Final decision under rule 18 partially granting protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision totally granting protection">
+				<xsd:annotation>
+					<xsd:documentation>Final decision under rule 18 totally granting protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision totally refusing protection">
+				<xsd:annotation>
+					<xsd:documentation>Final decision under rule 18 totally refusing protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Further decision partially granting protection">
+				<xsd:annotation>
+					<xsd:documentation>Further decision under rule 18 partially granting protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Further decision totally granting protection">
+				<xsd:annotation>
+					<xsd:documentation>Further decision under rule 18 totally granting protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Further decision totally refusing protection"> <!-- remove trailing space -->
+				<xsd:annotation>
+					<xsd:documentation>Further decision under Rule 18 totally refusing protection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Intermediate status regarding protection">
+				<xsd:annotation>
+					<xsd:documentation>Intermediate status regarding protection </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Seniority added"> <!-- new -->
+				<xsd:annotation>
+					<xsd:documentation>Seniority added to International Registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MadridInternationalRegistrationCreationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Registration">
+				<xsd:annotation>
+					<xsd:documentation>Registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial change of ownership"> <!-- remove trailing space -->
+				<xsd:annotation>
+					<xsd:documentation>Partial change of ownership </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="HolderChangeBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:PreviousHolderBag"/>
+			<xsd:element ref="tmk:HolderBag"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="MadridHolderRepresentativeChangeCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Change of holder name address">
+				<xsd:annotation>
+					<xsd:documentation>Change of holder name address</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of representative">
+				<xsd:annotation>
+					<xsd:documentation>Change of representative</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Limitation">
+				<xsd:annotation>
+					<xsd:documentation>Change of representative at time of limitation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Change of representative at time of partial cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total transfer">
+				<xsd:annotation>
+					<xsd:documentation>Change of Ownership (New holder different</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="GoodsServicesLimitationType">
+		<xsd:sequence>
+			<xsd:element ref="com:LimitationCountryCodeBag" minOccurs="0"/> <!-- not needed in Restriction -->
+			<xsd:element ref="tmk:GoodsServicesLimitationCategory" minOccurs="0"/> <!-- added minoccurs -->
+			<xsd:element ref="com:CommentText" minOccurs="0" maxOccurs="3"/> <!-- add maxOccurs for EM -->
+			<xsd:element ref="tmk:LimitationClassDescriptionBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="MadridProtectionRestrictionCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Limitation">
+				<xsd:annotation>
+					<xsd:documentation>Limitation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Partial Cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial ceasing of effect of basic registration"> <!-- make same as Completion -->
+				<xsd:annotation>
+					<xsd:documentation>Partial ceasing of effect of basic registration or application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial change of ownership">
+				<xsd:annotation>
+					<xsd:documentation>Partial change of ownership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final decision ">
+				<xsd:annotation>
+					<xsd:documentation>Final decision used for EM only</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Restriction of a holders right of disposal"> <!-- Remove trailing space -->
+				<xsd:annotation>
+					<xsd:documentation>Restriction of a holders right of disposal </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="LicenceBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:Licence" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReasonDocumentType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ReasonDocumentNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:ReasonDocumentDate" minOccurs="0"/>
+			<xsd:element ref="tmk:ReasonDocumentSource" minOccurs="0"/>
+			<xsd:element ref="com:Signature" minOccurs="0"/>
+			<xsd:element ref="tmk:ReasonDocumentCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:ReasonDocumentBag"/>
+			<xsd:element ref="tmk:FactDecisionText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContractInformationType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasicContractNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:BasicContractDate" minOccurs="0"/>
+			<xsd:element ref="tmk:ContractNumber"/>
+			<xsd:element ref="tmk:ContractDate" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClaimantBagType">
+		<xsd:choice>
+			<xsd:element ref="com:PartyIdentifierBag" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:Claimant" maxOccurs="unbounded"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="RecordPublicationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:RecordPublication" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TrademarkIdentificationType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:TrademarkIdentifierBag" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="MadridCorrectContentCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Madrid Correction Category Type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Transaction category corrected">
+				<xsd:annotation>
+					<xsd:documentation> indicates transaction category has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Correspondence address corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Correspondence Address has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Representative corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Representative has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Override goods and services corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates an override Goods and Services text has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Override corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates an override (limitation partial cancellation etc) has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Basic registration or application detailed corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Basic Registration Application details have changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Designation corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Designations have changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Goods and services corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Basic list of Goods and Services has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Holder corrected">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="International registration corrected">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Priority corrected">
+				<xsd:annotation>
+					<xsd:documentation/>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Image corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Mark Image has changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Mark text corrected">
+				<xsd:annotation>
+					<xsd:documentation>Indicates the Mark Texts (Colours, descriptions etc) have changed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Transaction cancelled">
+				<xsd:annotation>
+					<xsd:documentation>The incorrect transaction has been cancelled</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="PreviousHolderBag" type="tmk:PreviousHolderBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the previous mark Holders</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LimitationClassDescriptionBag" type="tmk:ClassDescriptionBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of class descriptions for certain goods and services to which the mark is limited</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesLimitationCategory" type="tmk:GoodsServicesLimitationCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Indication whether the trade mark protection is 'limited to' or 'removed from' the provided list of goods and services </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="BasicRecordType">
+		<xsd:sequence>
+			<xsd:element ref="com:RecordIdentifier"/>
+			<xsd:element ref="com:RecordFilingDate" minOccurs="0"/>
+			<xsd:element ref="com:RecordNotificationDate" minOccurs="0"/>
+			<xsd:element ref="com:RecordEffectiveDate" minOccurs="0"/>
+			<xsd:element ref="tmk:BasicRecordCategory" minOccurs="0"/>
+			<xsd:element ref="com:RecordReference" minOccurs="0"/>
+			<xsd:element ref="com:RecordLanguageCode" minOccurs="0"/>
+			<xsd:element ref="tmk:TrademarkIdentification" minOccurs="0"/>
+			<xsd:element ref="tmk:RecordPublicationBag" minOccurs="0"/>
+			<xsd:element ref="tmk:ClaimantBag" minOccurs="0"/>
+			<xsd:element ref="com:RepresentativeBag" minOccurs="0"/>
+			<xsd:element ref="com:RecordEventBag" minOccurs="0"/>
+			<xsd:element ref="com:RecordDocumentBag" minOccurs="0"/>
+			<xsd:element ref="com:RecordCurrentStatusCategory" minOccurs="0"/>
+			<xsd:element ref="com:RecordCurrentStatusDate" minOccurs="0"/>
+			<xsd:element ref="tmk:ContractInformation" minOccurs="0"/>
+			<xsd:element ref="tmk:ReasonDocument" minOccurs="0"/>
+			<xsd:element ref="com:RecordInterestedOfficeCode" minOccurs="0"/>
+			<xsd:element ref="com:RecordDesignatedCountryCodeBag" minOccurs="0"/>
+			<xsd:element ref="tmk:RecordUseIntentBag" minOccurs="0"/>
+			<xsd:element ref="tmk:GoodsServicesLimitationBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RecordUseIntentCountryCode" type="com:ExtendedWIPOST3CodeType">
+		<xsd:annotation>
+			<xsd:documentation>WIPO Standard ST.3 code of use intent requested in the record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DesignatedCountry" type="tmk:DesignatedCountryType">
+		<xsd:annotation>
+			<xsd:documentation>Designated contracting party for international trademarks</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Seniority" type="tmk:SeniorityType">
+		<xsd:annotation>
+			<xsd:documentation>Seniority details. Rights based on earlier identical trade mark registered in EU member state or at WIPO with effect to EU member state</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Priority" type="tmk:PriorityType">
+		<xsd:annotation>
+			<xsd:documentation>Priority claimed under the Paris Convention</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRegistrationApplication" type="tmk:BasicRegistrationApplicationType">
+		<xsd:annotation>
+			<xsd:documentation>Data relating to the registration/ application in the office of origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServices" type="tmk:GoodsServicesType">
+		<xsd:annotation>
+			<xsd:documentation>Goods and Services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkDisclaimerText" type="com:OrderedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Disclaimer text</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistration" type="tmk:PreviousRegistrationType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a previous registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkFeatureCategory" type="tmk:MarkFeatureCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of mark feature</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:attribute name="transliterationCategory" type="tmk:TransliterationCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of transliteration rules applied to the term based on the source and target writing systems. Current values are based on existing ISO standards for transliteration. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	<xsd:simpleType name="MadridRenewalCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Renewal">
+				<xsd:annotation>
+					<xsd:documentation>Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Complementary renewal">
+				<xsd:annotation>
+					<xsd:documentation>Complementary renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MadridDesignationTerminationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Non renewal of trademark">
+				<xsd:annotation>
+					<xsd:documentation>Non renewal of trademark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Non renewal of contracting party">
+				<xsd:annotation>
+					<xsd:documentation>Non renewal of contracting party</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total ceasing of effect of basic registration"> <!-- make casme as Completeion --> 
+				<xsd:annotation>
+					<xsd:documentation>Total ceasing of effect of basic registration or application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renunciation">
+				<xsd:annotation>
+					<xsd:documentation>Renunciation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial change of ownership">
+				<xsd:annotation>
+					<xsd:documentation>Partial change of ownership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Merger">
+				<xsd:annotation>
+					<xsd:documentation>Merger</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Second payment not paid"> <!-- remove trailing space -->
+				<xsd:annotation>
+					<xsd:documentation>Second payment not paid </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total cancellation"> <!-- chanegd form Cancellation -->
+				<xsd:annotation>
+					<xsd:documentation>Cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="BasicRecord" type="tmk:BasicRecordType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a basic record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="RecordUseIntentBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:RecordUseIntentCountryCode" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DesignatedCountryBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:DesignatedCountry" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SeniorityBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:Seniority" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PriorityBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:Priority" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BasicRegistrationApplicationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasicRegistrationApplication" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GoodsServicesLimitationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:GoodsServicesLimitation" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GoodsServicesBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:GoodsServices" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MarkDisclaimerBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MarkDisclaimerText" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MarkTranslationText" type="com:OrderedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Translation of the word mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PreviousRegistrationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:PreviousRegistration" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="MarkCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Mark">
+				<xsd:annotation>
+					<xsd:documentation> Any sign or combination of signs, capable of distinguishing the goods or services of one undertaking from those of other undertakings. This can include a trademark, service mark, collective trademark, collective service mark, or certification mark.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Trademark">
+				<xsd:annotation>
+					<xsd:documentation> Any sign or combination of signs, capable of distinguishing the goods of one undertaking from those of other undertakings.  Sometimes the term “trademark” is also used as a synonym of the term “mark” and thus referring to both goods and/or services.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Service mark">
+				<xsd:annotation>
+					<xsd:documentation>Any sign or combination of signs, capable of distinguishing the services of one undertaking from those of other undertakings.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Defensive mark">
+				<xsd:annotation>
+					<xsd:documentation>A mark may be registered as a defensive mark, in some jurisdictions, typically for protection of well-known registered marks. Where a registered mark has become well-known among the consumers for the goods and/or services covered, its holder may obtain registration of the same mark for other goods and/or services even where, in respect of those latter goods and/or services, the mark is not used or is not intended to be used.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Individual mark">
+				<xsd:annotation>
+					<xsd:documentation>The individual mark is the opposite of the collective mark. An individual mark may sometimes be wrongly called an ordinary mark or a standard mark.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective mark">
+				<xsd:annotation>
+					<xsd:documentation>Any trademark or service mark that is used by members of a collective organization (such as a cooperative, an association or a federation of industries, producers or traders) and that distinguishes the goods and/or services of the members of that collective organization from those of non-members.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective trademark">
+				<xsd:annotation>
+					<xsd:documentation>A sub-type of collective mark that is used by members of a collective organization (such as a cooperative, an association or a federation of industries, producers or traders) and that distinguishes the goods of the members of that collective organization from those of non-members.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective service mark">
+				<xsd:annotation>
+					<xsd:documentation>A sub-type of collective mark that is used by members of a collective organization (such as a cooperative, an association or a federation of industries, producers or traders) and that distinguishes the services of the members of that collective organization from those of non-members.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective membership mark">
+				<xsd:annotation>
+					<xsd:documentation>A sub-type of collective mark that is used only to indicate membership in the collective organization. It is not used to identify and distinguish any goods or services of one undertaking from those of other undertakings.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Certification mark">
+				<xsd:annotation>
+					<xsd:documentation>Any mark used by a person other than its owner to certify regional or other origin, material, mode of manufacture, quality, accuracy, or other characteristics of such person’s goods or services or that the work or labor on the goods or services was performed by members of a union or other organization. It distinguishes goods or services certified by the proprietor of the certification mark, guarantee mark or standardization mark from the goods and services of other undertakings.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Well known mark under TRIPS Article 16_2">
+				<xsd:annotation>
+					<xsd:documentation>Any mark that is well known to the relevant sector of the public on identical or similar goods and services for which registration or use is sought pursuant to the TRIPS Agreement and the Paris Convention.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Well known mark under TRIPS Article 16_3">
+				<xsd:annotation>
+					<xsd:documentation>Any mark that is well known to the relevant sector of the public on dissimilar goods and services for which registration or use is sought pursuant to the TRIPS Agreement and the Paris Convention.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Well known collective mark">
+				<xsd:annotation>
+					<xsd:documentation>Well known collective mark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="MarkFeatureCategoryBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MarkFeatureCategory" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MarkImageClassificationType">
+		<xsd:sequence>
+			<xsd:element ref="com:FigurativeElementClassificationBag"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MarkTransliterationType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:token">
+				<xsd:attribute ref="tmk:transliterationCategory"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="MarkImageType">
+		<xsd:sequence>
+			<xsd:element ref="com:FileName"/>
+			<xsd:element ref="com:ImageFormatCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:MarkImageColourClaimedText" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:MarkImageColourPartClaimedText" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="com:HeightMeasure" minOccurs="0"/>
+			<xsd:element ref="com:WidthMeasure" minOccurs="0"/>
+			<xsd:element ref="tmk:MarkImageClassification" minOccurs="0"/>
+			<xsd:element ref="tmk:MarkImageQualityIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:MarkImageRenditionBag" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalDesignSearchCodeBag" minOccurs="0"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="com:ColourIndicator"/>
+				<xsd:element ref="com:ColourModeCategory"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attribute ref="com:sequenceNumber"/>
+	</xsd:complexType>
+	<xsd:complexType name="HolderBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:Holder" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="MadridDesignationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Subsequent designation">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial change of ownership">
+				<xsd:annotation>
+					<xsd:documentation>Partial change of ownership</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Merger">
+				<xsd:annotation>
+					<xsd:documentation>Merger</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Subsequent designation resulting from conversion ">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation resulting from conversion </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registration">
+				<xsd:annotation>
+					<xsd:documentation>Registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MadridSystemCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Agreement">
+				<xsd:annotation>
+					<xsd:documentation>Agreement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Protocol">
+				<xsd:annotation>
+					<xsd:documentation>Protocol</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Protocol article 9 sexies">
+				<xsd:annotation>
+					<xsd:documentation>Designation under the protocol by virtue of Article 9 sexies</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="MadridIBTransactionCount" type="tmk:MadridIBTransactionCountType">
+		<xsd:annotation>
+			<xsd:documentation>Madrid IB to office transaction count</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IrregularityBag">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tmk:Irregularity" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridIrregularityNotificationCategory" type="tmk:MadridIrregularityNotificationCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Irregularity Notification Category</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NotificationIdentifier" type="com:IdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>Identifier of notification such as tracking number</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassTotalQuantity" type="xsd:nonNegativeInteger">
+		<xsd:annotation>
+			<xsd:documentation>The total number of classes, e.g. for fee calculation</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LicenseeChangeBag" type="tmk:LicenseeChangeBagType">
+		<xsd:annotation>
+			<xsd:documentation>Details of the previous and the new licensees of the trade mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Licensee" type="tmk:LicenseeType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a licensee</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="RecordLicenceType">
+		<xsd:sequence>
+			<xsd:element ref="com:RecordIdentifier" minOccurs="0"/>
+			<xsd:element ref="com:RecordFilingDate" minOccurs="0"/>
+			<xsd:element ref="com:RecordNotificationDate" minOccurs="0"/>
+			<xsd:element ref="com:RecordEffectiveDate" minOccurs="0"/>
+			<xsd:element ref="com:RecordLicenceCategory"/>
+			<xsd:element ref="com:RecordReference" minOccurs="0"/>
+			<xsd:element ref="com:RecordLanguageCode" minOccurs="0"/>
+			<xsd:element ref="tmk:TrademarkIdentification" minOccurs="0"/>
+			<xsd:element ref="tmk:RecordPublicationBag" minOccurs="0"/>
+			<xsd:element ref="tmk:ClaimantBag" minOccurs="0"/>
+			<xsd:element ref="com:RepresentativeBag" minOccurs="0"/>
+			<xsd:element ref="com:RecordEventBag" minOccurs="0"/>
+			<xsd:element ref="com:RecordDocumentBag" minOccurs="0"/>
+			<xsd:element ref="com:RecordCurrentStatusCategory" minOccurs="0"/>
+			<xsd:element ref="com:RecordCurrentStatusDate" minOccurs="0"/>
+			<xsd:element ref="com:RecordInterestedOfficeCode" minOccurs="0"/>
+			<xsd:element ref="tmk:ContractInformation" minOccurs="0"/>
+			<xsd:element ref="tmk:ReasonDocument" minOccurs="0"/>
+			<xsd:element ref="com:RecordDesignatedCountryCodeBag" minOccurs="0"/>
+			<xsd:element ref="tmk:LicenceBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MadridCorrectContent">
+		<xsd:annotation>
+			<xsd:documentation>Corrected Notification to a contracting party</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:choice minOccurs="0">
+					<xsd:element ref="tmk:MadridDesignation"/>
+					<xsd:element ref="tmk:MadridDesignationTermination"/>
+					<xsd:element ref="tmk:MadridRenewal"/>
+					<xsd:element ref="tmk:MadridProtectionRestriction"/>
+					<xsd:element ref="tmk:MadridHolderRepresentativeChange"/>
+					<xsd:element ref="tmk:MadridBasicRegistrationApplicationChange"/>
+					<xsd:element ref="tmk:MadridInternationalRegistrationCreation"/>
+					<xsd:element ref="tmk:MadridSecondPartPayment"/>
+				</xsd:choice>
+				<xsd:element ref="tmk:MadridCorrectContentCategory" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridIncorrectContent">
+		<xsd:annotation>
+			<xsd:documentation>A transaction that was previously submitted with incorrect data</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="tmk:MadridDesignation"/>
+				<xsd:element ref="tmk:MadridDesignationTermination"/>
+				<xsd:element ref="tmk:MadridRenewal"/>
+				<xsd:element ref="tmk:MadridProtectionRestriction"/>
+				<xsd:element ref="tmk:MadridHolderRepresentativeChange"/>
+				<xsd:element ref="tmk:MadridBasicRegistrationApplicationChange"/>
+				<xsd:element ref="tmk:MadridInternationalRegistrationCreation"/>
+				<xsd:element ref="tmk:MadridSecondPartPayment"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CorrectionDescriptionBag">
+		<xsd:annotation>
+			<xsd:documentation>A collection of correction description</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tmk:CorrectionDescriptionText" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridCompletedProcessingCategory" type="tmk:MadridCompletedProcessingCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>CompletedProcessingCategoryType</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridInternationalRegistrationCreationCategory" type="tmk:MadridInternationalRegistrationCreationCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Catgegory of event which caused the creation of the international registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="HolderChangeBag" type="tmk:HolderChangeBagType">
+		<xsd:annotation>
+			<xsd:documentation>Details of the previous and the new holder of the trade mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassNumber" type="tmk:NiceClassNumberType">
+		<xsd:annotation>
+			<xsd:documentation>Classification number</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRegistration" type="tmk:BasicRegistrationType">
+		<xsd:annotation>
+			<xsd:documentation>Data on the basic registration in the office of origin </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicApplication" type="tmk:BasicApplicationType">
+		<xsd:annotation>
+			<xsd:documentation>Data on the basic application in the office of origin </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="NiceClassStrictNumberType">
+		<xsd:restriction base="xsd:positiveInteger">
+			<xsd:maxInclusive value="45"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClassificationKindCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Primary">
+				<xsd:annotation>
+					<xsd:documentation>The classification code that is primary in the national office or the office of origin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Nice">
+				<xsd:annotation>
+					<xsd:documentation>Nice</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Domestic">
+				<xsd:annotation>
+					<xsd:documentation>Domestic</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Pseudo mark">
+				<xsd:annotation>
+					<xsd:documentation>Nice International Class number(s) that equate to the identified goods and/or services in class that is nationally classified.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation>Other</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="AnotherFormFirstUsedAnywhereText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A statement of the name of the other trademark and when it was first used  anywhere in another form</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AnotherFormFirstUsedCommerceText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A statement of the name of the other trademark and when it was first used in another form in commerce.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FirstUsedCommerceDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The date the mark was first used in commerce.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FirstUsedDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The date the mark was first used.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AmendedBasis" type="tmk:AmendedBasisType">
+		<xsd:annotation>
+			<xsd:documentation>A container that holds indicators about any filing or registration bases that have been amended. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="CurrentBasis" type="tmk:FilingBasisType">
+		<xsd:annotation>
+			<xsd:documentation>The bases that currently exist for the trademark application or registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FilingBasis" type="tmk:FilingBasisType">
+		<xsd:annotation>
+			<xsd:documentation>The filing bases that were claimed by the applicant when the trademark application was filed</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalClassTotalQuantity" type="xsd:nonNegativeInteger">
+		<xsd:annotation>
+			<xsd:documentation>The total number of classes associated with the goods or services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesClassification" type="tmk:GoodsServicesClassificationType">
+		<xsd:annotation>
+			<xsd:documentation>A single type of classification for good(s) or service(s) identifications or terms</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalStatus" type="tmk:NationalStatusType">
+		<xsd:annotation>
+			<xsd:documentation>The status of a single trademark trial and or appeal board proceedings.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalDesignCodeDescriptionText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Free format for the national office design search code description(s) related to a specific national code</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalDesignCode" type="xsd:token">
+		<xsd:annotation>
+			<xsd:documentation>This is the national office design search code.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageRenditionCategory" type="com:ImageRenditionCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of rendition performed on the original image</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="LicenceType">
+		<xsd:sequence>
+			<xsd:element ref="com:LicenceIdentifier" minOccurs="0"/>
+			<xsd:element ref="com:LicenceDate" minOccurs="0"/>
+			<xsd:element ref="com:LicenceNumber" minOccurs="0"/>
+			<xsd:element ref="com:LicenceReference" minOccurs="0"/>
+			<xsd:element ref="com:LicenceCategory" minOccurs="0"/>
+			<xsd:element ref="com:SublicenceIndicator" minOccurs="0"/>
+			<xsd:element ref="com:RelatedLicenceIdentifier" minOccurs="0"/>
+			<xsd:element ref="tmk:GoodsServicesLimitationIndicator"/>
+			<xsd:element ref="tmk:GoodsServicesLimitation" minOccurs="0"/>
+			<xsd:element ref="com:TerritoryLimitationIndicator" minOccurs="0"/>
+			<xsd:element ref="com:TerritoryLimitationText" minOccurs="0"/>
+			<xsd:element ref="com:PeriodLimitationIndicator" minOccurs="0"/>
+			<xsd:element ref="com:PeriodLimitationText" minOccurs="0"/>
+			<xsd:element ref="com:PeriodLimitationStartDate" minOccurs="0"/>
+			<xsd:element ref="com:PeriodLimitationEndDate" minOccurs="0"/>
+			<xsd:element ref="com:LicenceStatusCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:LicenseeBag"/>
+			<xsd:element ref="com:RepresentativeBag" minOccurs="0"/>
+			<xsd:element ref="com:LicenceEventBag" minOccurs="0"/>
+			<xsd:element ref="com:LicenceDocumentBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ReasonDocumentCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Decision of registration">
+				<xsd:annotation>
+					<xsd:documentation>Decision of registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Request of the holder">
+				<xsd:annotation>
+					<xsd:documentation>Request of the holder</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NonRenewal">
+				<xsd:annotation>
+					<xsd:documentation>The cancellation at nonrenewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of correction">
+				<xsd:annotation>
+					<xsd:documentation>Decision of correction</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of registration licensee">
+				<xsd:annotation>
+					<xsd:documentation>Decision of registration licensee</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of non contracted transfer">
+				<xsd:annotation>
+					<xsd:documentation>Decision of non contracted transfer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of transfer">
+				<xsd:annotation>
+					<xsd:documentation>Decision of transfer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of partial transfer">
+				<xsd:annotation>
+					<xsd:documentation>Decision of partial transfer</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of pledge">
+				<xsd:annotation>
+					<xsd:documentation>Decision of pledge</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of subsequent pledge">
+				<xsd:annotation>
+					<xsd:documentation>Decision of subsequent pledge</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Decision of change in contract">
+				<xsd:annotation>
+					<xsd:documentation>Decision of change in contract</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Judicial action">
+				<xsd:annotation>
+					<xsd:documentation>Judicial action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ClaimantType">
+		<xsd:complexContent>
+			<xsd:extension base="com:LegalEntityType">
+				<xsd:sequence>
+					<xsd:element ref="com:CommentText" minOccurs="0"/>
+					<xsd:element ref="tmk:Entitlement" minOccurs="0"/>
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element ref="com:PartyIdentifier"/>
+						<xsd:element ref="com:Contact"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute ref="com:operationCategory"/>
+				<xsd:attribute ref="com:sequenceNumber"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PublicationType">
+		<xsd:sequence>
+			<xsd:element ref="com:PublicationIdentifier"/>
+			<xsd:element ref="tmk:PublicationSectionCategory" minOccurs="0"/>
+			<xsd:element ref="com:PublicationSubsection" minOccurs="0"/>
+			<xsd:element ref="com:PublicationDate" minOccurs="0"/>
+			<xsd:element ref="com:PublicationPage" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalPublication"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TrademarkIdentifierBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:TrademarkIdentifier" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PreviousHolder" type="tmk:ApplicantType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding the previous holder of the trade mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassDescription" type="tmk:ClassDescriptionType">
+		<xsd:annotation>
+			<xsd:documentation>Details of one Goods and Services class and description</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="BasicRecordCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Second part fee paid">
+				<xsd:annotation>
+					<xsd:documentation>Second part fee paid</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Second part fee not paid">
+				<xsd:annotation>
+					<xsd:documentation>Second part fee not paid</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Protection granted">
+				<xsd:annotation>
+					<xsd:documentation>Protection granted</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Judicial action">
+				<xsd:annotation>
+					<xsd:documentation>Judicial action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Effect continuation">
+				<xsd:annotation>
+					<xsd:documentation>Effect continuation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renunciation">
+				<xsd:annotation>
+					<xsd:documentation>Renunciation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Transfer refusal">
+				<xsd:annotation>
+					<xsd:documentation>Transfer refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Representative appointed">
+				<xsd:annotation>
+					<xsd:documentation>Representative appointed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Appeal expired">
+				<xsd:annotation>
+					<xsd:documentation>Appeal expired</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Appeal lapsed">
+				<xsd:annotation>
+					<xsd:documentation>Appeal lapsed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Appeal withdrawn">
+				<xsd:annotation>
+					<xsd:documentation>Appeal withdrawn</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total refusal">
+				<xsd:annotation>
+					<xsd:documentation>Total refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total invalidation">
+				<xsd:annotation>
+					<xsd:documentation>Total invalidation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Total cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total ceasing effect">
+				<xsd:annotation>
+					<xsd:documentation>Total ceasing effect</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final confirmation refusal">
+				<xsd:annotation>
+					<xsd:documentation>Final confirmation refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final reversing refusal">
+				<xsd:annotation>
+					<xsd:documentation>Final reversing refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final total refusal">
+				<xsd:annotation>
+					<xsd:documentation>Final total refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renewal under rule 40_3">
+				<xsd:annotation>
+					<xsd:documentation>Final total refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NonRenewal">
+				<xsd:annotation>
+					<xsd:documentation>NonRenewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NonRenewal certain parties">
+				<xsd:annotation>
+					<xsd:documentation>NonRenewal certain parties</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NonRenewal under rule 40_3">
+				<xsd:annotation>
+					<xsd:documentation>NonRenewal under rule 40_3</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registration">
+				<xsd:annotation>
+					<xsd:documentation>Registration</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Subsequent designation">
+				<xsd:annotation>
+					<xsd:documentation>Subsequent designation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Limitation">
+				<xsd:annotation>
+					<xsd:documentation>Limitation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="No effect limitation">
+				<xsd:annotation>
+					<xsd:documentation>No effect limitation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial refusal">
+				<xsd:annotation>
+					<xsd:documentation>Partial refusal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial ceasing effect">
+				<xsd:annotation>
+					<xsd:documentation>Partial ceasing effect</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial invalidation">
+				<xsd:annotation>
+					<xsd:documentation>Partial invalidation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial cancellation">
+				<xsd:annotation>
+					<xsd:documentation>Partial cancellation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renewal">
+				<xsd:annotation>
+					<xsd:documentation>Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Complementary renewal">
+				<xsd:annotation>
+					<xsd:documentation>Complementary renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Final other decision">
+				<xsd:annotation>
+					<xsd:documentation>Final other decision</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="SeniorityDocument" type="com:DocumentType">
+		<xsd:annotation>
+			<xsd:documentation>Accompanying document with the seniority claim</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityStatusDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of status of the seniority claim</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityStatusCategory" type="tmk:SeniorityStatusCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of status of the seniority claim</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityPartialGoodsServices" type="tmk:GoodsServicesType">
+		<xsd:annotation>
+			<xsd:documentation>Seniority claimed for part of goods and services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityPartialIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indication of partial seniority claimed. (In case no further goods and services are specified) </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="InternationalTrademarkCategory" type="tmk:InternationalTrademarkCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category for distinction between registration in EU member state or at WIPO </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityPublicationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The publication date of the trade mark for which seniority is claimed</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityRegistrationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Registration date of the trade mark for which seniority is claimed </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityRegistrationNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Registration number for which seniority is claimed</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityFilingDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Valid filing date in case it is after the application date</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityApplicationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Filing date of the application for which seniority is claimed </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityApplicationNumber" type="com:ApplicationNumberType">
+		<xsd:annotation>
+			<xsd:documentation>Filing number of the application for which seniority is claimed </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityCountryCode" type="com:ExtendedWIPOST3CodeType">
+		<xsd:annotation>
+			<xsd:documentation>EU member state</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RegistrationChangeBag" type="tmk:RegistrationChangeBagType">
+		<xsd:annotation>
+			<xsd:documentation>The collection of the changes to Trademark Registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PublicationNoticeDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The date the notice of publication is issued.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ProposedRegistrationNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>This is the registration number that will appear in the future in the national office's publication.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PublicationActionDate" type="xsd:date">
+		<xsd:annotation>
+			<xsd:documentation>This date is a record of when something has happened or a trigger for when something is going to happen in the national office's publication cycle.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PublicationCategoryText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>The reason the mark is appearing in the national office's publication.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PublicationStatusCategory" type="xsd:token">
+		<xsd:annotation>
+			<xsd:documentation>The state of the case in the national office's publication cycle.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ClassificationTermBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassificationTerm" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ClassNumberStatusCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Provisional">
+				<xsd:annotation>
+					<xsd:documentation>Provisional</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="National">
+				<xsd:annotation>
+					<xsd:documentation>National status</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="BasicRegistrationType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasicRegistrationNumber"/>
+			<xsd:element ref="tmk:BasicRegistrationDate"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BasicApplicationType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasicApplicationNumber"/>
+			<xsd:element ref="tmk:BasicApplicationDate" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AmendedBasisType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasisForeignApplicationIndicator"/>
+			<xsd:element ref="tmk:BasisForeignRegistrationIndicator"/>
+			<xsd:element ref="tmk:BasisUseIndicator"/>
+			<xsd:element ref="tmk:BasisIntentToUseIndicator"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FilingBasisType">
+		<xsd:complexContent>
+			<xsd:extension base="tmk:AmendedBasisType">
+				<xsd:sequence>
+					<xsd:element ref="tmk:NoBasisIndicator"/>
+					<xsd:element ref="tmk:BasisInternationalRegistrationIndicator" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GoodsServicesClassificationType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassificationKindCode"/>
+			<xsd:element ref="com:ClassificationVersion" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalClassNumber" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The national classification number or the primary classification used by the national office		</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="tmk:ClassTitleText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NationalStatusType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassNumberStatusCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalStatusCategory"/>
+			<xsd:element ref="tmk:NationalStatusCode" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalStatusDate" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalStatusInternalDescriptionText" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalStatusExternalDescriptionText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="BasicRecordCategory" type="tmk:BasicRecordCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of basic record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="DesignatedCountryType">
+		<xsd:sequence>
+			<xsd:element ref="com:DesignatedCountryCode"/>
+			<xsd:element ref="tmk:MadridSystemCategory" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SeniorityType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:SeniorityCountryCode"/>
+			<xsd:element ref="tmk:SeniorityApplicationNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityApplicationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityFilingDate" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityRegistrationNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityRegistrationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityPublicationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:InternationalTrademarkCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityPartialIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityPartialGoodsServices" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityStatusCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityStatusDate" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+			<xsd:element ref="tmk:SeniorityDocument" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PriorityType">
+		<xsd:sequence>
+			<xsd:element ref="com:PriorityCountryCode"/>
+			<xsd:element ref="com:ApplicationNumber" minOccurs="0"/>
+			<xsd:element ref="com:PriorityApplicationFilingDate" minOccurs="0"/>
+			<xsd:element ref="com:PriorityHolderName" minOccurs="0"/>
+			<xsd:element ref="com:PriorityStatusCategory" minOccurs="0"/>
+			<xsd:element ref="com:PriorityStatusDate" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+			<xsd:element ref="com:PriorityDocument" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:PriorityPartialIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityPartialGoodsServices" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationExpiredDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationRenewedDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationRenewalExpiredDate" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BasicRegistrationApplicationType">
+		<xsd:sequence>
+			<xsd:element ref="com:RegistrationOfficeCode" minOccurs="0"/>
+			<xsd:element ref="tmk:BasicApplicationBag" minOccurs="0"/> <!-- chnaged can be app, reg or both -->
+			<xsd:element ref="tmk:BasicRegistrationBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GoodsServicesType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:GoodsServicesClassificationBag" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalGoodsServices" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalFilingBasis" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationKindCode" minOccurs="0"/>
+			<xsd:element ref="com:ClassificationVersion" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+			<xsd:element ref="tmk:ProposedLeadingClassNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassDescriptionBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PreviousRegistrationType">
+		<xsd:sequence>
+			<xsd:element ref="com:RegistrationOfficeCode" minOccurs="0"/>
+			<xsd:element ref="tmk:PreviousRegistrationNumber"/>
+			<xsd:element ref="tmk:PreviousRegistrationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:DomesticNotificationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:AutomaticProtectionDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PreviousRegistrationBasisCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:PreviousRegistrationCancellationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PreviousRegistrationPriorityDate" minOccurs="0"/>
+			<xsd:element ref="tmk:SubsequentDesignationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PreviousRegistrationStatusBag" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityClaimIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:FirstRefusalIssueIndicator" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="MarkFeatureCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Word">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of letters, words, numerals and/or other punctuation or diacritical characters commonly found in standard style</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Stylized characters">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of letters, words and/or numerals comprised of special characteristics such as style(s) of lettering, or unusual form(s) of punctuation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Figurative">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of two-dimensional figures such as pictures, images and drawings without letters or words and/or numerals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Combined">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of more than one mark feature, e.g. “word”, “figurative element” and/or “colour” as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Three dimensional">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of a three-dimensional object as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Colour">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting exclusively of a colour or a combination of colours without any figurative element as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Sound">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of audio rather than visual means to distinguish a product or service, and claimed as such in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Hologram">
+				<xsd:annotation>
+					<xsd:documentation>A mark that consists of or contains a hologram as part of its distinctive features as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Olfactory">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of a distinctive smell, scent or odour of a product or used in relation to services and as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Motion">
+				<xsd:annotation>
+					<xsd:documentation>A mark depicting motion or movement as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Multimedia">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of the combination of movement and sound claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Position">
+				<xsd:annotation>
+					<xsd:documentation>A mark which consists of the manner in which the sign is placed or laid out on the product as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Touch">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of the distinctive texture of a product as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Taste">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of the distinctive taste of a product as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Tracer">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of a certain symbol or combination, mixture or pattern of colours that runs lengthwise through the product which is usually sold by cutting off a portion from a roll/bale etc. as claimed in a statement contained in the application. For example, coloured thread running through cables and patterns running the length of ropes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation>Any other type of mark as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TransliterationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Arabic to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Arabic to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Armenian to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Armenian to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Chinese to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Chinese to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Cyrillic to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Cyrillic to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Georgian to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Georgian to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Greek to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Greek to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Hebrew to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Hebrew to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Indic to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Indic to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Japanese to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Japanese to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Korean to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Korean to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Thai to Latin">
+				<xsd:annotation>
+					<xsd:documentation>Thai to Latin</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="NationalDesignSearchCodeBagType">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element ref="tmk:NationalDesignSearchCode"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MarkImageRenditionBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MarkImageRendition" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ApplicantType">
+		<xsd:complexContent>
+			<xsd:extension base="com:LegalEntityType">
+				<xsd:sequence>
+					<xsd:element ref="tmk:AssignmentConveyanceCategory" minOccurs="0"/>
+					<xsd:element ref="tmk:AssignmentIdentifier" minOccurs="0"/>
+					<xsd:element ref="com:CommentText" minOccurs="0"/>
+					<xsd:element ref="tmk:Entitlement" minOccurs="0"/>
+					<xsd:element ref="com:Version" minOccurs="0"/>
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element ref="com:PartyIdentifier"/>
+						<xsd:element ref="com:Contact"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute ref="com:operationCategory"/>
+				<xsd:attribute ref="com:sequenceNumber"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="MadridIBTransactionCategory" type="tmk:MadridIBTransactionCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Madrid IB to office transaction category</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IrregularityDescriptionText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Description of irregularity</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IrregularityConsequenceCategory" type="tmk:IrregularityConsequenceCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Consequences if the irregularity is not corrected</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ResponsiblePartyCategory" type="tmk:ResponsiblePartyCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Party responsible for correcting the irregularity</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="IrregularityIdenfier" type="com:IdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>Irregularity Identifier issued by WIPO</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="LicenseeBag" type="tmk:LicenseeBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the licensees </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousLicenseeBag" type="tmk:PreviousLicenseeBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the previous mark licensees</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Entitlement" type="tmk:EntitlementType">
+		<xsd:annotation>
+			<xsd:documentation>Information on the nationality, establishement, or domicile of a party </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="MadridIBTransactionCountBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MadridIBTransactionCount" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MadridAbandonmentNotification">
+		<xsd:annotation>
+			<xsd:documentation>Notification of Abandonment</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:ApplicationLanguageCode"/>
+				<xsd:element ref="tmk:NotificationIdentifier"/>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ApplicantFileReference" minOccurs="0"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="tmk:MadridIrregularityNotificationCategory"/>
+				<xsd:element ref="com:MailDate"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridIrregularityNotification">
+		<xsd:annotation>
+			<xsd:documentation>Notification of irregularity to Offices from WIPO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:ApplicationLanguageCode"/>
+				<xsd:element ref="com:ResponseDueDate"/>
+				<xsd:element ref="tmk:NotificationIdentifier"/>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ApplicantFileReference" minOccurs="0"/>
+				<xsd:element ref="com:InternationalRegistrationNumber" minOccurs="0"/>
+				<xsd:element ref="tmk:MadridIrregularityNotificationCategory"/>
+				<xsd:element ref="com:PaymentDueDate"/>
+				<xsd:element ref="com:Contact"/>
+				<xsd:element ref="com:MailDate"/>
+				<xsd:element ref="tmk:IrregularityBag"/>
+				<xsd:element ref="com:PaymentBag" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridSecondPartPayment">
+		<xsd:annotation>
+			<xsd:documentation>Second part of a two part fee has been paid</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="com:RecordFilingDate"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:FeeCalculationDate"/>
+				<xsd:element ref="tmk:ClassTotalQuantity"/>
+				<xsd:element ref="com:CorrespondenceAddress" minOccurs="0"/>
+				<xsd:element ref="tmk:HolderBag"/>
+				<xsd:element ref="com:Representative" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridLicenseeRecordChange">
+		<xsd:annotation>
+			<xsd:documentation>Change of name and or address of licensee</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:ApplicationLanguageCode"/>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:LicenceIdentifier"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="com:RecordFilingDate"/>
+				<xsd:element ref="com:RecordNotificationDate"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:CorrespondenceAddress" minOccurs="0"/>
+				<xsd:element ref="tmk:HolderBag"/>
+				<xsd:element ref="tmk:LicenseeChangeBag"/>
+				<xsd:element ref="com:Representative" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RecordLicence" type="tmk:RecordLicenceType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a licence record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridCorrection">
+		<xsd:annotation>
+			<xsd:documentation>A transaction that was previously notified with incorrect data</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="tmk:CorrectionDescriptionBag"/>
+				<xsd:element ref="com:PublicationIdentifier" minOccurs="0"/>
+				<xsd:element ref="tmk:MadridIncorrectContent"/>
+				<xsd:element ref="tmk:MadridCorrectContent"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridCompletedProcessing">
+		<xsd:annotation>
+			<xsd:documentation>Transaction processing completed at WIPO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:RecordFilingDate" minOccurs="0"/>
+				<xsd:element ref="tmk:MadridCompletedProcessingCategory"/>
+				<xsd:element ref="com:ApplicantFileReference" minOccurs="0"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridInternationalRegistrationCreation">
+		<xsd:annotation>
+			<xsd:documentation>Notification of creation of international registration to the office of origin</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:ApplicationLanguageCode"/>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="tmk:OfficeOriginCode"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:ExpiryDate"/>
+				<xsd:element ref="com:RecordNotificationDate"/>
+				<xsd:element ref="tmk:MadridInternationalRegistrationCreationCategory"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ApplicantFileReference" minOccurs="0"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="com:CorrespondenceAddress" minOccurs="0"/>
+				<xsd:element ref="tmk:HolderBag"/>
+				<xsd:element ref="com:Representative" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkImage"/>
+				<xsd:element ref="tmk:MarkTransliteration" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkSignificantVerbalElementText" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkStandardCharacterIndicator" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkImageClassification" minOccurs="0"/>
+				<xsd:element ref="com:ColourIndicator" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkFeatureCategoryBag" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkCategory" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkVerbalElementSignificantIndicator" minOccurs="0"/>
+				<xsd:element ref="tmk:PreviousRegistrationBag" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkImageColourClaimedText" minOccurs="0" maxOccurs="3"/> <!-- add maxOccurs -->
+				<xsd:element ref="tmk:MarkImageColourPartClaimedText" minOccurs="0" maxOccurs="3"/>
+				<xsd:element ref="tmk:MarkDescriptionText" minOccurs="0" maxOccurs="3"/>
+				<xsd:element ref="tmk:MarkTranslationTextBag" minOccurs="0" maxOccurs="3"/>
+				<xsd:element ref="tmk:MarkDisclaimerBag" minOccurs="0"/>
+				<xsd:element ref="tmk:GoodsServicesBag"/>
+				<xsd:element ref="tmk:BasicRegistrationApplicationBag" minOccurs="0"/> <!-- add minOccurs shouldn't happen, but does -->
+				<xsd:element ref="tmk:GoodsServicesLimitation" minOccurs="0"/>
+				<xsd:element ref="tmk:PriorityBag" minOccurs="0"/> <!-- add min occurs -->
+				<xsd:element ref="tmk:DesignatedCountryBag"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridBasicRegistrationApplicationChange">
+		<xsd:annotation>
+			<xsd:documentation>Change to the basic registration or basic application on which an international registration is based</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:ReceivingOfficeCode"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:RecordNotificationDate"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="tmk:BasicRegistrationApplicationBag"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridHolderRepresentativeChange">
+		<xsd:annotation>
+			<xsd:documentation>Each new name transaction contains details of a new holder or representative of an international trademark</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ApplicantFileReference" minOccurs="0"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="tmk:MadridHolderRepresentativeChangeCategory"/>
+				<xsd:element ref="com:RecordNotificationDate"/>
+				<xsd:element ref="com:CorrespondenceAddress" minOccurs="0"/>
+				<xsd:element ref="tmk:HolderChangeBag" minOccurs="0"/>
+				<xsd:element ref="com:Representative" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridProtectionRestriction">
+		<xsd:annotation>
+			<xsd:documentation>Restriction of Protection</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:ApplicationLanguageCode"/>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:RecordFilingDate"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="tmk:MadridProtectionRestrictionCategory"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:RecordNotificationDate"/>
+				<xsd:element ref="tmk:GoodsServicesLimitationBag"/> <!-- was just GoodsServicesLimitationBag -->
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridRenewal">
+		<xsd:annotation>
+			<xsd:documentation>Data related to the renewal of an international registration</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="tmk:MadridRenewalCategory"/>
+				<xsd:element ref="com:RecordFilingDate"/>
+				<xsd:element ref="tmk:MadridSystemCategory"/>
+				<xsd:element ref="tmk:RenewalDate"/>
+				<xsd:element ref="com:FeeCalculationDate"/>
+				<xsd:element ref="tmk:ActiveClassTotalQuantity"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ExpiryDate"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridDesignationTermination">
+		<xsd:annotation>
+			<xsd:documentation>Termination of protection in the designated contracting party</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="tmk:MadridDesignationTerminationCategory"/>
+				<xsd:element ref="com:RecordFilingDate"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ExpiryDate"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridDesignation">
+		<xsd:annotation>
+			<xsd:documentation>Designation, including subsequent designation, of international registration to contracting parties.  Also known as request for extension of protection</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="com:ApplicationLanguageCode"/>
+				<xsd:element ref="com:SecondLanguageCode" minOccurs="0"/>
+				<xsd:element ref="com:RecordIdentifier"/>
+				<xsd:element ref="tmk:OfficeOriginCode"/>
+				<xsd:element ref="com:RecordEffectiveDate"/>
+				<xsd:element ref="com:RecordFilingDate"/>
+				<xsd:element ref="tmk:MadridSystemCategory"/>
+				<xsd:element ref="com:InternationalRegistrationDate"/>
+				<xsd:element ref="tmk:RenewalDate" minOccurs="0"/>
+				<xsd:element ref="com:FeeCalculationDate"/>
+				<xsd:element ref="tmk:ActiveClassTotalQuantity"/>
+				<xsd:element ref="com:ExpiryDate"/>
+				<xsd:element ref="com:RecordNotificationDate"/>
+				<xsd:element ref="tmk:MadridDesignationCategory"/>
+				<xsd:element ref="com:OfficeReferenceIdentifier" minOccurs="0"/>
+				<xsd:element ref="com:ApplicantFileReference" minOccurs="0"/>
+				<xsd:element ref="com:InternationalRegistrationNumber"/>
+				<xsd:element ref="com:CorrespondenceAddress" minOccurs="0"/>
+				<xsd:element ref="tmk:HolderBag"/>
+				<xsd:element ref="com:Representative" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkImage"/>
+				<xsd:element ref="tmk:MarkTransliteration" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkSignificantVerbalElementText" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkStandardCharacterIndicator" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkImageClassification" minOccurs="0"/>
+				<xsd:element ref="com:ColourIndicator" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkFeatureCategoryBag" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkCategory" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkVerbalElementSignificantIndicator" minOccurs="0"/>
+				<xsd:element ref="tmk:PreviousRegistrationBag" minOccurs="0"/>
+				<xsd:element ref="tmk:MarkImageColourClaimedText" minOccurs="0" maxOccurs="3"/> <!-- changed -->
+				<xsd:element ref="tmk:MarkImageColourPartClaimedText" minOccurs="0" maxOccurs="3"/> <!-- changed -->
+				<xsd:element ref="tmk:MarkDescriptionText" minOccurs="0" maxOccurs="3"/> <!-- changed -->
+				<xsd:element ref="tmk:MarkTranslationTextBag" minOccurs="0"/> 
+				<xsd:element ref="tmk:MarkDisclaimerBag" minOccurs="0"/>
+				<xsd:element ref="tmk:GoodsServicesBag"/>
+				<xsd:element ref="tmk:GoodsServicesLimitationBag" minOccurs="0"/>
+				<xsd:element ref="tmk:BasicRegistrationApplicationBag" minOccurs="0"/>
+				<xsd:element ref="tmk:PriorityBag" minOccurs="0"/>
+				<xsd:element ref="tmk:SeniorityBag" minOccurs="0"/>
+				<xsd:element ref="tmk:DesignatedCountryBag"/>
+				<xsd:element ref="tmk:RecordUseIntentBag" minOccurs="0"/>
+				<xsd:element ref="tmk:BasicRecordBag" minOccurs="0"/>
+<!--				<xsd:element ref="tmk:GoodsServicesLimitationBag" minOccurs="0"/>  duplicate?-->
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridIBTransactionCountBag" type="tmk:MadridIBTransactionCountBagType">
+		<xsd:annotation>
+			<xsd:documentation>A collection of Madrid IB to office transaction count</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridIBToOfficeBag">
+		<xsd:annotation>
+			<xsd:documentation>Electronic Notification to a contracting party</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="tmk:MadridDesignation"/>
+				<xsd:element ref="tmk:MadridDesignationTermination"/>
+				<xsd:element ref="tmk:MadridRenewal"/>
+				<xsd:element ref="tmk:MadridProtectionRestriction"/>
+				<xsd:element ref="tmk:MadridHolderRepresentativeChange"/>
+				<xsd:element ref="tmk:MadridBasicRegistrationApplicationChange"/>
+				<xsd:element ref="tmk:MadridInternationalRegistrationCreation"/>
+				<xsd:element ref="tmk:MadridCompletedProcessing"/>
+				<xsd:element ref="tmk:MadridCorrection"/>
+				<xsd:element ref="tmk:RecordLicence"/>
+				<xsd:element ref="tmk:MadridLicenseeRecordChange"/>
+				<xsd:element ref="tmk:MadridSecondPartPayment"/>
+				<xsd:element ref="tmk:MadridIrregularityNotification"/>
+				<xsd:element ref="tmk:MadridAbandonmentNotification"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MadridIBTransactionHeader" type="tmk:MadridIBTransactionHeaderType"/>
+	<xsd:complexType name="MadridIBTransactionHeaderType">
+		<xsd:sequence>
+			<xsd:element ref="com:ReceivingOfficeCode"/>
+			<xsd:element ref="com:PublicationIdentifier" minOccurs="0"/>
+			<xsd:element ref="com:WeekNumber"/>
+			<xsd:element ref="com:PublicationDate"/>
+			<xsd:element ref="com:RecordNotificationDate"/>
+			<xsd:element ref="com:NotificationLanguage"/>
+			<xsd:element ref="com:TransactionTotalQuantity"/>
+			<xsd:element ref="tmk:MadridIBTransactionCountBag"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MarkSignificantVerbalElementText" type="com:LocalizedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Significant Verbal elements of the mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImage" type="tmk:MarkImageType">
+		<xsd:annotation>
+			<xsd:documentation>Data related to the image representation of the mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="HolderBag" type="tmk:HolderBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the mark Holders</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridDesignationCategory" type="tmk:MadridDesignationCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>MadridDesignationCategoryType</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkTransliteration" type="tmk:MarkTransliterationType">
+		<xsd:annotation>
+			<xsd:documentation>Transliteration of the mark name into another writing system</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RenewalDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The renewal date of the national trademark registration.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="OfficeOriginCode" type="com:ExtendedWIPOST3CodeType">
+		<xsd:annotation>
+			<xsd:documentation>Office of Origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridSystemCategory" type="tmk:MadridSystemCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category for distinguishing Madrid Agreement or Protocol for international registration of marks</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityRegistrationRenewalExpiredDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The renewal expiration date of the foreign priority registration. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityRegistrationRenewedDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The renewal date of the foreign priority registration.   </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityRegistrationExpiredDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The expiration date of the foreign priority registration.  </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityRegistrationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The registration date of the foreign priority registration.  </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityRegistrationNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>The priority registration priority number. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityPartialGoodsServices" type="tmk:GoodsServicesType">
+		<xsd:annotation>
+			<xsd:documentation>Priority claimed for part of the goods and services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityPartialIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indication of partial priority claimed. (In case no further goods and services are specified). </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRegistrationBag" type="tmk:BasicRegistrationBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the basic registrations in the Office of Origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicApplicationBag" type="tmk:BasicApplicationBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of basic applications in the office of origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassDescriptionBag" type="tmk:ClassDescriptionBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of Goods and Services classes and descriptions</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ProposedLeadingClassNumber" type="tmk:NiceClassNumberType">
+		<xsd:annotation>
+			<xsd:documentation>Leading class suggested by the applicant</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationKindCode" type="tmk:ClassificationKindCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Type of Classification</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalFilingBasis" type="tmk:NationalFilingBasisType">
+		<xsd:annotation>
+			<xsd:documentation>The national filing bases for trademark applications and registrations. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalGoodsServices" type="tmk:NationalGoodsServicesType">
+		<xsd:annotation>
+			<xsd:documentation>A container to hold different types of classifications for good(s) or service(s) identifications or terms</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesClassificationBag" type="tmk:GoodsServicesClassificationBagType">
+		<xsd:annotation>
+			<xsd:documentation>The collection of classifications for good(s) or service(s) identifications or terms</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FirstRefusalIssueIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Presence indicates that the office issued a provisional refusal of protection. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityClaimIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Presence indicates that the extention of the previous registration contains a priority claim.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationStatusBag" type="tmk:NationalStatusBagType">
+		<xsd:annotation>
+			<xsd:documentation>The status of the case that has been identified as being previously registered. For example, the details of the status of a previous international registration that served as the basis for the current national registration.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SubsequentDesignationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of subsequent designation of the previous registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationPriorityDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Priority date of the previous registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationCancellationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Cancellation date of the previous registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationBasisCategory" type="tmk:PreviousRegistrationBasisCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of reason for current registration having had a previous registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AutomaticProtectionDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The date that the request for extension of protection will the granted, if the office fails to send a overriding notification to the IB. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DomesticNotificationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date that WIPO  notified the national office of a change.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Registration date of previous mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Registration number of previous mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalDesignSearchCode" type="tmk:NationalDesignSearchCodeType">
+		<xsd:annotation>
+			<xsd:documentation>This is the national office design search code.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageRendition" type="tmk:MarkImageRenditionType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding an image rendered from the source image</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AssignmentIdentifier" type="com:IdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>The unique identifier for a particular national assignment</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AssignmentConveyanceCategory" type="xsd:token">
+		<xsd:annotation>
+			<xsd:documentation>The category of assignment recorded </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="MadridIBTransactionCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Madrid IB to office transaction category type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Designation">
+				<xsd:annotation>
+					<xsd:documentation>Designation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Correction">
+				<xsd:annotation>
+					<xsd:documentation>correction</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="International registration creation">
+				<xsd:annotation>
+					<xsd:documentation>International registration creation </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Designation termination">
+				<xsd:annotation>
+					<xsd:documentation>Designation termination</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Irregularity">
+				<xsd:annotation>
+					<xsd:documentation>Irregularity</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Basic registration application change">
+				<xsd:annotation>
+					<xsd:documentation>Basic registration application change</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Holder representative change">
+				<xsd:annotation>
+					<xsd:documentation>Holder representative change</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Protection restriction">
+				<xsd:annotation>
+					<xsd:documentation>Protection restriction</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Completed processing">
+				<xsd:annotation>
+					<xsd:documentation>Completed processing</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="International registration renewal">
+				<xsd:annotation>
+					<xsd:documentation>International registration renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Record licence">
+				<xsd:annotation>
+					<xsd:documentation>Record licence</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Licensee record change">
+				<xsd:annotation>
+					<xsd:documentation>Licensee record change</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Second part payment">
+				<xsd:annotation>
+					<xsd:documentation>Second part payment</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="RegistrationChangeBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:RegistrationChange" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ClassificationTerm" type="tmk:ClassificationTermType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a classification term for goods and services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRegistrationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of the basic registration in the Office of Origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRegistrationNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Number of the basic registration in the Office of Origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicApplicationDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of the basic application in the office of origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicApplicationNumber" type="com:ApplicationNumberType">
+		<xsd:annotation>
+			<xsd:documentation>Number of the basic application in the office of origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasisIntentToUseIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>The indication that a basis for the national trademark application  is the intent to use the trademark in commerce to identify goods and services.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasisUseIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>The indication that a basis for the national trademark application or registration is use of the trademark in commerce to identify  goods and services.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasisForeignRegistrationIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>The indication that a basis for the national trademark application or registration is a foreign trademark registration </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasisForeignApplicationIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>The indication that a basis for the national trademark application is a foreign trademark application. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasisInternationalRegistrationIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>The registration basis is based upon a international registration that was extended into the designated contracting party.
+This indicates that the basis for the national trademark application or registration is a extention of protection into the national office of a international registration </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NoBasisIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>The indication that there is no basis for the national trademark application. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassTitleText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>A short title for the class number in free format.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalClassNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>The national classification number or the primary classification used by the national office
+		</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalStatusExternalDescriptionText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>The description of the national status presented externally   </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalStatusInternalDescriptionText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>The description of the national status presented internally   </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalStatusDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>The date the national Status was set to it current value</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RegistrationChange" type="tmk:RegistrationChangeType">
+		<xsd:annotation>
+			<xsd:documentation>The details about the changes that have been made to a registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ClassificationTermType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassificationTermIdentifier" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermOfficeCode" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermOfficeIdentification" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermSourceCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermEntryDate" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermText"/>
+			<xsd:element ref="tmk:ClassificationTermEquivalentGroup" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermReferenceGroup" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermTranslationGroup" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermStatus" minOccurs="0"/>
+			<xsd:element ref="tmk:WIPOBasicNumber" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="com:operationCategory"/>
+	</xsd:complexType>
+	<xsd:simpleType name="NationalStatusCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="National trademark status">
+				<xsd:annotation>
+					<xsd:documentation>The national status of a trademark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="National class status">
+				<xsd:annotation>
+					<xsd:documentation>The national ntatus for a class in a trademark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="National term status">
+				<xsd:annotation>
+					<xsd:documentation>The national status for a good or service term in a trademark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="National legal proceeding status">
+				<xsd:annotation>
+					<xsd:documentation>The national status for legal proceedings concerning a trademark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="MadridHolderRepresentativeChangeCategory" type="tmk:MadridHolderRepresentativeChangeCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of event which caused the change of holder or representative name or address</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesLimitation" type="tmk:GoodsServicesLimitationType">
+		<xsd:annotation>
+			<xsd:documentation>Goods and services to which the mark is limited</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridProtectionRestrictionCategory" type="tmk:MadridProtectionRestrictionCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of event which caused the restriction</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridRenewalCategory" type="tmk:MadridRenewalCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of the event which caused the international renewal</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MadridDesignationTerminationCategory" type="tmk:MadridDesignationTerminationCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Madrid Designation Termination Category Type</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ActiveClassTotalQuantity" type="xsd:nonNegativeInteger">
+		<xsd:annotation>
+			<xsd:documentation>The total number of active classes in a trademark application or registration</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRecordBag">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tmk:BasicRecord" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RecordUseIntentBag" type="tmk:RecordUseIntentBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the use intent countries requested in the record</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="DesignatedCountryBag" type="tmk:DesignatedCountryBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of designated countries</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SeniorityBag" type="tmk:SeniorityBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of seniorities</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityBag" type="tmk:PriorityBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of priorities</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicRegistrationApplicationBag" type="tmk:BasicRegistrationApplicationBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the registration/ applications in the office of origin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesLimitationBag" type="tmk:GoodsServicesLimitationBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the goods and services to which the mark is limited</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesBag" type="tmk:GoodsServicesBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of Goods and Services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkDisclaimerBag" type="tmk:MarkDisclaimerBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of disclaimers</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkTranslationTextBag">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tmk:MarkTranslationText" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MarkDescriptionText" type="com:LocalizedTextType">
+		<xsd:annotation>
+			<xsd:documentation>A text which describes the feature of the mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageColourPartClaimedText" type="com:OrderedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Description of the part of colours claimed</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageColourClaimedText" type="com:OrderedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Description of the colours claimed</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PreviousRegistrationBag" type="tmk:PreviousRegistrationBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of previous registrations</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkVerbalElementSignificantIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indicates if the words contained in the mark have meaning or not (and therefore can be translated or not). </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkCategory" type="tmk:MarkCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkFeatureCategoryBag" type="tmk:MarkFeatureCategoryBagType">
+		<xsd:annotation>
+			<xsd:documentation>Bag of Categories of mark feature</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkImageClassification" type="tmk:MarkImageClassificationType">
+		<xsd:annotation>
+			<xsd:documentation>List of classification of figurative elements</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="MarkStandardCharacterIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indication that the word mark is considered to be in standard characters by the applicant</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="BasicApplicationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasicApplication" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="NiceClassNumberType">
+		<xsd:union memberTypes="xsd:string tmk:NiceClassStrictNumberType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClassificationKindCodeType">
+		<xsd:union memberTypes="com:ExtendedWIPOST3CodeType xsd:token tmk:ClassificationKindCategoryType"/>
+	</xsd:simpleType>
+	<xsd:complexType name="NationalFilingBasisType">
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element ref="tmk:FilingBasis"/>
+			<xsd:element ref="tmk:CurrentBasis"/>
+			<xsd:element ref="tmk:AmendedBasis"/>
+			<xsd:element ref="tmk:FirstUsedDate"/>
+			<xsd:element ref="tmk:FirstUsedCommerceDate"/>
+			<xsd:element ref="tmk:AnotherFormFirstUsedCommerceText"/>
+			<xsd:element ref="tmk:AnotherFormFirstUsedAnywhereText"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="NationalGoodsServicesType">
+		<xsd:annotation>
+			<xsd:documentation>A container to hold Goods and Services data specific to National Offices</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="tmk:ActiveClassTotalQuantity" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalClassTotalQuantity"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GoodsServicesClassificationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:GoodsServicesClassification" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NationalStatusBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:NationalStatus" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PreviousRegistrationBasisCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Transformation">
+				<xsd:annotation>
+					<xsd:documentation>Transformation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Renewal">
+				<xsd:annotation>
+					<xsd:documentation>Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="NationalDesignSearchCodeType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:NationalDesignCode"/>
+			<xsd:element ref="tmk:NationalDesignCodeDescriptionText" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MarkImageRenditionType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MarkImageRenditionCategory" minOccurs="0"/>
+			<xsd:element ref="com:FileName" minOccurs="0"/>
+			<xsd:element ref="com:ImageFormatCategory" minOccurs="0"/>
+			<xsd:element ref="com:ColourModeCategory" minOccurs="0"/>
+			<xsd:element ref="com:HeightMeasure"/>
+			<xsd:element ref="com:WidthMeasure"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="PreviousLicensee" type="tmk:LicenseeType"/>
+	<xsd:element name="GoodsServicesLimitationIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indication whether the licence is for a limitation in the list of goods and services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalPublication" type="tmk:NationalPublicationType">
+		<xsd:annotation>
+			<xsd:documentation>Information about publication that is specific to a national office.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PublicationSectionCategory" type="tmk:PublicationSectionCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of section of / reason for publication</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TrademarkIdentifier" type="com:IdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>Trademark Identifier</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ClassDescriptionType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassNumberStatusCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalStatusBag" minOccurs="0"/>
+			<xsd:element ref="tmk:GoodsServicesDescriptionText" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:UseNiceHeadingIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="SeniorityStatusCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Claimed">
+				<xsd:annotation>
+					<xsd:documentation>Claimed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Abandoned">
+				<xsd:annotation>
+					<xsd:documentation>Abandoned</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Accepted">
+				<xsd:annotation>
+					<xsd:documentation>Accepted</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partially refused">
+				<xsd:annotation>
+					<xsd:documentation>Partially refused</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refused">
+				<xsd:annotation>
+					<xsd:documentation>Refused</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="InternationalTrademarkCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Madrid">
+				<xsd:annotation>
+					<xsd:documentation>Madrid</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EU">
+				<xsd:annotation>
+					<xsd:documentation>European Union</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="BasicRegistrationBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:BasicRegistration" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ClassificationTermIdentifier" type="com:IdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>Identifier of the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="NationalPublicationType">
+		<xsd:annotation>
+			<xsd:documentation>Information about publication that is specific to a national office.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="tmk:PublicationStatusCategory"/>
+			<xsd:element ref="tmk:PublicationCategoryText" minOccurs="0"/>
+			<xsd:element ref="tmk:PublicationActionDate" minOccurs="0"/>
+			<xsd:element ref="tmk:ProposedRegistrationNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:PublicationNoticeDate" minOccurs="0"/>
+			<xsd:element ref="tmk:RegistrationChangeBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PublicationSectionCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Applications">
+				<xsd:annotation>
+					<xsd:documentation>Applications</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Amendments to applications">
+				<xsd:annotation>
+					<xsd:documentation>Amendments to applications</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Correction of errors on applications">
+				<xsd:annotation>
+					<xsd:documentation>Correction of errors on applications</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Withdrawals">
+				<xsd:annotation>
+					<xsd:documentation>Withdrawals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Limitations">
+				<xsd:annotation>
+					<xsd:documentation>Limitations</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total refusals">
+				<xsd:annotation>
+					<xsd:documentation>Total refusals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial refusals">
+				<xsd:annotation>
+					<xsd:documentation>Partial refusals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registrations with no amendments">
+				<xsd:annotation>
+					<xsd:documentation>Registrations with no amendments</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registrations with amendments">
+				<xsd:annotation>
+					<xsd:documentation>Registrations with amendments</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Correction of errors on registrations">
+				<xsd:annotation>
+					<xsd:documentation>Correction of errors on registrations</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total transfers">
+				<xsd:annotation>
+					<xsd:documentation>Total transfers</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial transfers">
+				<xsd:annotation>
+					<xsd:documentation>Partial transfers</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of name and address of proprietor">
+				<xsd:annotation>
+					<xsd:documentation>Change of name and address of proprietor</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Change of name and professional address of representative">
+				<xsd:annotation>
+					<xsd:documentation>Change of name and professional address of representative</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Replacement of representative">
+				<xsd:annotation>
+					<xsd:documentation>Replacement of representative</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Appointment of a new representative">
+				<xsd:annotation>
+					<xsd:documentation>Appointment of a new representative</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Deletion of the representative">
+				<xsd:annotation>
+					<xsd:documentation>Deletion of the representative</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Total surrender of trademarks">
+				<xsd:annotation>
+					<xsd:documentation>Total surrender of trademarks</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Partial surrender of trademarks">
+				<xsd:annotation>
+					<xsd:documentation>Partial surrender of trademarks</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Correction of errors on registrations">
+				<xsd:annotation>
+					<xsd:documentation>Registrations publishing to correct errors</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registrations with restrictions">
+				<xsd:annotation>
+					<xsd:documentation>Registrations that are publishing again with restrictions</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registrations no longer in effect">
+				<xsd:annotation>
+					<xsd:documentation>Trademark registrations publishing that are being cancelled and are no longer in effect</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registrations renewed">
+				<xsd:annotation>
+					<xsd:documentation>Trademark registrations that are being renewed</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applications publishing for opposition">
+				<xsd:annotation>
+					<xsd:documentation>Trademark applications that are publishing for opposition</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registrations publishing">
+				<xsd:annotation>
+					<xsd:documentation>Trademark registrations that are publishing for the first time</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Registration republished">
+				<xsd:annotation>
+					<xsd:documentation>Trademark registrations that are republishing for reasons other than correction or amendment</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="ClassificationTermBag" type="tmk:ClassificationTermBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the classification terms</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="UseNiceHeadingIndicator" type="xsd:boolean">
+		<xsd:annotation>
+			<xsd:documentation>Indication whether the class description uses the Nice heading</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GoodsServicesDescriptionText" type="com:LocalizedTextType"> <!-- Chaned from OrderedTextType -->
+		<xsd:annotation>
+			<xsd:documentation>Description of goods or services within the Nice class</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalStatusBag" type="tmk:NationalStatusBagType">
+		<xsd:annotation>
+			<xsd:documentation>The collection of statuses used by national offices. These could pertain to the mark itself, classes or terms in the good or services descriptions, or the status of trademark trial or board proceedings. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassNumberStatusCategory" type="tmk:ClassNumberStatusCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of status of the class number of the goods and services assigned to a mark. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="RegistrationChangeType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ChangeDescriptionText" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:ChangeText" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WIPOBasicNumber" type="tmk:WIPOBasicNumberType">
+		<xsd:annotation>
+			<xsd:documentation>Basic Number of the classification term assigned by WIPO. The basic number is the same for every language version of the Classification that has been published by, or in collaboration with, WIPO. The basic number enables the user of the Classification to find the equivalent product or service in the alphabetical lists of other language versions of the Classification. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermStatus" type="tmk:ClassificationTermStatusType">
+		<xsd:annotation>
+			<xsd:documentation>Validity status of the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermTranslationGroup" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Group of terms that are a translation of the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermReferenceGroup" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Group of terms that are a reference for the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermEquivalentGroup" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Group of terms that are equivalent to the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermText" type="com:LocalizedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Text regarding the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermEntryDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of entry of the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermSourceCategory" type="tmk:ClassificationTermSourceCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Source of the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermOfficeIdentification" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Key identifying the Office defining the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassificationTermOfficeCode" type="com:ExtendedWIPOST3CodeType">
+		<xsd:annotation>
+			<xsd:documentation>Office defining the classification term</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="IrregularityConsequenceCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Applicant">
+				<xsd:annotation>
+					<xsd:documentation>Applicant</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Office">
+				<xsd:annotation>
+					<xsd:documentation>Office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applicant">
+				<xsd:annotation>
+					<xsd:documentation>Applicant</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applicant or office">
+				<xsd:annotation>
+					<xsd:documentation>Either applicant or office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applicant via office">
+				<xsd:annotation>
+					<xsd:documentation>Applicant via office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="None">
+				<xsd:annotation>
+					<xsd:documentation>Irregularity is an observation or uncorrectable</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ResponsiblePartyCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Applicant">
+				<xsd:annotation>
+					<xsd:documentation>Applicant</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Office">
+				<xsd:annotation>
+					<xsd:documentation>Office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applicant">
+				<xsd:annotation>
+					<xsd:documentation>Applicant</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applicant or office">
+				<xsd:annotation>
+					<xsd:documentation>Either applicant or office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Applicant via office">
+				<xsd:annotation>
+					<xsd:documentation>Applicant via office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="None">
+				<xsd:annotation>
+					<xsd:documentation>Irregularity is an observation or uncorrectable</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="LicenseeBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:Licensee" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PreviousLicenseeBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:PreviousLicensee" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EntitlementType">
+		<xsd:sequence>
+			<xsd:element ref="com:EntitlementNationalityCode" minOccurs="0"/>
+			<xsd:element ref="com:EntitlementEstablishment"/>
+			<xsd:element ref="com:EntitlementDomiciled" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Licence" type="tmk:LicenceType">
+		<xsd:annotation>
+			<xsd:documentation>Data concerning a licence</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="FactDecisionText" type="com:LocalizedTextType">
+		<xsd:annotation>
+			<xsd:documentation>Text regarding the fact decision</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReasonDocumentBag" type="com:RecordDocumentBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of documents under which a legally significant act takes place </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReasonDocumentCategory" type="tmk:ReasonDocumentCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of document under which a legally significant act takes place </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReasonDocumentSource" type="xsd:token">
+		<xsd:annotation>
+			<xsd:documentation>Source of the document under which a legally significant act takes place</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReasonDocumentDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of the document under which a legally significant act takes place</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ReasonDocumentNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Number of the document under which a legally significant act takes place</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContractDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of the contract</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContractNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Registration number of the contract</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicContractDate" type="com:DateType">
+		<xsd:annotation>
+			<xsd:documentation>Date of the basic contract</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="BasicContractNumber" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Registration number of the basic contract</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Claimant" type="tmk:ClaimantType">
+		<xsd:annotation>
+			<xsd:documentation>Individual/Organization that claims a mark record (transfer, licence, change of name or address, etc.)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RecordPublication" type="tmk:PublicationType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a record publication</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="TrademarkIdentifierBag" type="tmk:TrademarkIdentifierBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of identifiers identifying a trademark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PreviousHolderBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:PreviousHolder" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClassDescriptionBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassDescription" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="GoodsServicesLimitationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="List limited to">
+				<xsd:annotation>
+					<xsd:documentation>List limited to</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Remove from list">
+				<xsd:annotation>
+					<xsd:documentation>Remove from list</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClassificationTermStatusCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Requested">
+				<xsd:annotation>
+					<xsd:documentation>Requested</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Accepted">
+				<xsd:annotation>
+					<xsd:documentation>Accepted</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Refused">
+				<xsd:annotation>
+					<xsd:documentation>Refused</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="No longer in use">
+				<xsd:annotation>
+					<xsd:documentation>No longer in use</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="ChangeText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Detailed description of the change</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChangeDescriptionText" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Description of the nature of the change to a data element within the registration that is being republished</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="WIPOBasicNumberType">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="\d{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ClassificationTermStatusType">
+		<xsd:simpleContent>
+			<xsd:extension base="tmk:ClassificationTermStatusCategoryType">
+				<xsd:attribute ref="com:officeCode"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="ClassificationTermSourceCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Nice">
+				<xsd:annotation>
+					<xsd:documentation>Nice</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Office">
+				<xsd:annotation>
+					<xsd:documentation>Office</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EM_JP_US">
+				<xsd:annotation>
+					<xsd:documentation>EM_JP_US</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EM_US">
+				<xsd:annotation>
+					<xsd:documentation>EM_US</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="NationalStatusCode" type="xsd:token">
+		<xsd:annotation>
+			<xsd:documentation>The code that represents the national status for the trademark, class term status.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NationalStatusCategory" type="tmk:NationalStatusCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>The category of status being sent.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>
