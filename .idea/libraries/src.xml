@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="src">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/fdgsi/fdgsi-project/src/ST96XMLSchema_V3_0_20180213.zip!/" />
+      <root url="jar://$PROJECT_DIR$/fdgsi/fdgsi-project/src/ST96XMLSchema_V3_0_20180213-Flattened.zip!/" />
+      <root url="jar://$PROJECT_DIR$/fdgsi/fdgsi-project/src/samplemt.zip!/" />
+      <root url="jar://$PROJECT_DIR$/fdgsi/fdgsi-project/src/srcmc.zip!/" />
+      <root url="jar://$PROJECT_DIR$/fdgsi/fdgsi-project/src/srcmdl.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
